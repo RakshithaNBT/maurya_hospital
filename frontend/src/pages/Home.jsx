@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import { FaUserMd, FaClinicMedical, FaClock, FaHeartbeat, FaCheckCircle, FaStar, FaShieldAlt } from 'react-icons/fa';
@@ -242,7 +243,7 @@ const Home = () => {
         </div>
 
         {/* Service Detail Modal */}
-        {selectedCard && (
+        {selectedCard && createPortal(
           <div className="qs-modal-backdrop" onClick={() => setSelectedCard(null)}>
             <div className="qs-modal" onClick={e => e.stopPropagation()}>
               <button className="qs-modal-close" onClick={() => setSelectedCard(null)} aria-label="Close">✕</button>
@@ -261,7 +262,8 @@ const Home = () => {
               </ul>
               <a href="/contact" className="btn btn-primary" style={{ marginTop: '28px', display: 'inline-block' }}>Book an Appointment</a>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </section>
 
@@ -774,6 +776,8 @@ const Home = () => {
             box-shadow: 0 30px 80px rgba(158,42,34,0.18), 0 8px 24px rgba(0,0,0,0.12);
             animation: modalSlideUp 0.35s cubic-bezier(0.34,1.56,0.64,1);
             border-top: 5px solid var(--primary-color);
+            max-height: 90vh;
+            overflow-y: auto;
           }
 
           @keyframes modalSlideUp {
