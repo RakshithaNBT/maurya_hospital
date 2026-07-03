@@ -43,7 +43,7 @@ function App() {
     <>
       {loading && <LoadingScreen fadeOut={fadeOut} />}
       
-      <Router>
+      <Router basename={import.meta.env.DEV ? '/' : '/maurya_hospital'}>
         <Routes>
           {/* Public Views nested in MainLayout */}
           <Route path="/" element={<MainLayout />}>
