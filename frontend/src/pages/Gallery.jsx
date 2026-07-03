@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import PageBanner from '../components/PageBanner';
 import useFetch from '../hooks/useFetch';
-import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaTimes, FaChevronLeft, FaChevronRight, FaHourglassHalf } from 'react-icons/fa';
 
 const fallbackGallery = [
   {
@@ -334,9 +334,13 @@ const Gallery = () => {
           )}
           
           {!loading && filteredGallery.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--text-muted)' }}>
-              <h3>No images available in this category.</h3>
-              <p>Please select another category to view our gallery.</p>
+            <div className="gallery-coming-soon-container">
+              <div className="gallery-coming-soon-glow" />
+              <div className="coming-soon-icon-wrapper">
+                <FaHourglassHalf />
+              </div>
+              <h3>Coming Soon</h3>
+              <p>We are currently gathering media for this category. Check back soon for updates!</p>
             </div>
           )}
         </div>
@@ -666,6 +670,138 @@ const Gallery = () => {
 
         @media (max-width: 480px) {
           .premium-masonry { column-count: 1; }
+        }
+        /* ── Premium Coming Soon Animation styles ── */
+        .gallery-coming-soon-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 80px 40px;
+          text-align: center;
+          background: #ffffff;
+          border-radius: 24px;
+          box-shadow: 0 15px 35px rgba(158, 42, 34, 0.04), var(--shadow-sm);
+          border: 1px solid rgba(158, 42, 34, 0.05);
+          max-width: 500px;
+          margin: 60px auto;
+          position: relative;
+          overflow: hidden;
+          animation: fadeInComingSoon 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .gallery-coming-soon-glow {
+          position: absolute;
+          width: 200px;
+          height: 200px;
+          background: radial-gradient(circle, rgba(158, 42, 34, 0.08) 0%, transparent 70%);
+          border-radius: 50%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 0;
+          pointer-events: none;
+          animation: glowPulse 3s infinite ease-in-out;
+        }
+
+        .coming-soon-icon-wrapper {
+          position: relative;
+          z-index: 1;
+          width: 80px;
+          height: 80px;
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #ffffff;
+          font-size: 2rem;
+          margin-bottom: 24px;
+          box-shadow: 0 10px 20px rgba(158, 42, 34, 0.2);
+          animation: bounceFloat 3s infinite ease-in-out;
+        }
+
+        .coming-soon-icon-wrapper::after {
+          content: '';
+          position: absolute;
+          inset: -8px;
+          border: 2px dashed rgba(230, 179, 37, 0.6);
+          border-radius: 50%;
+          animation: spinRing 20s linear infinite;
+        }
+
+        .gallery-coming-soon-container h3 {
+          position: relative;
+          z-index: 1;
+          font-size: 2rem;
+          font-weight: 800;
+          background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 50%, var(--accent-color) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 12px;
+          letter-spacing: 0.05em;
+          animation: textShimmer 4s infinite linear;
+          background-size: 200% auto;
+        }
+
+        .gallery-coming-soon-container p {
+          position: relative;
+          z-index: 1;
+          color: var(--text-muted);
+          font-size: 1.05rem;
+          max-width: 320px;
+          margin: 0;
+          line-height: 1.6;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInComingSoon {
+          from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        @keyframes glowPulse {
+          0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.6;
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1.4);
+            opacity: 1;
+          }
+        }
+
+        @keyframes bounceFloat {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+
+        @keyframes spinRing {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes textShimmer {
+          0% {
+            background-position: 0% center;
+          }
+          100% {
+            background-position: 200% center;
+          }
         }
       `}</style>
     </div>
