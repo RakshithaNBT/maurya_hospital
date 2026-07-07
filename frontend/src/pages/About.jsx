@@ -1451,6 +1451,46 @@ const About = () => {
             letter-spacing: 0.03em;
             text-transform: uppercase;
           }
+
+          /* Mobile Responsiveness for Clinical Support Accordion and Badges */
+          @media (max-width: 768px) {
+            .active-featured-card .acs-card-inner {
+              flex-direction: column !important;
+              align-items: center !important;
+              text-align: center !important;
+              padding: 24px 20px !important;
+              gap: 15px !important;
+            }
+            .active-featured-card .acs-card-content {
+              flex-direction: column !important;
+              align-items: center !important;
+              justify-content: center !important;
+              gap: 10px !important;
+            }
+            .active-featured-card .acs-card-title {
+              justify-content: center !important;
+            }
+            .active-featured-card .acs-card-desc {
+              text-align: center !important;
+              width: 100% !important;
+            }
+            .acs-expanded-info-box {
+              padding: 24px 20px !important;
+              border-radius: 16px !important;
+              margin: 15px 0 25px !important;
+            }
+            .acs-expanded-detail-title {
+              font-size: 1.2rem !important;
+            }
+            .acs-expanded-detail-text {
+              font-size: 0.95rem !important;
+              margin-bottom: 16px !important;
+            }
+            .acs-expanded-badge-item {
+              padding: 6px 12px !important;
+              font-size: 0.8rem !important;
+            }
+          }
         `}</style>
       </section>
 

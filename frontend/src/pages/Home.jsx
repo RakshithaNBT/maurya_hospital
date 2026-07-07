@@ -195,12 +195,12 @@ const Home = () => {
       </section>
 
       {/* 2. Quick Services */}
-      <section 
+      <section
         ref={qsRef}
         className={`quick-services container ${qsVisible ? 'qs-visible' : ''}`}
         style={{ marginTop: '60px', paddingBottom: '80px' }}
       >
-        <div 
+        <div
           className="qs-marquee-container"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -271,14 +271,14 @@ const Home = () => {
       <section className={`why-choose-us section-padding ${wcuVisible ? 'wcu-visible' : ''}`} ref={wcuRef}>
         <div className="container">
           <div className="wcu-redesign-grid">
-            
+
             {/* Left Column: Heading, Subtitle & Feature Cards */}
             <div className="wcu-left-content">
               <h2 className="wcu-main-heading">Why Choose Maurya Hospital?</h2>
               <p className="wcu-main-subtitle">
                 Trusted healthcare with experienced specialists, advanced technology and compassionate care.
               </p>
-              
+
               <div className="wcu-cards-stack">
                 {[
                   {
@@ -304,8 +304,8 @@ const Home = () => {
                 ].map((feature, idx) => {
                   const isActive = activeWcu === idx;
                   return (
-                    <div 
-                      key={idx} 
+                    <div
+                      key={idx}
                       className={`wcu-feature-card ${isActive ? 'wcu-active' : ''}`}
                       onClick={() => setActiveWcu(isActive ? null : idx)}
                       style={{ cursor: 'pointer' }}
@@ -332,9 +332,9 @@ const Home = () => {
             {/* Right Column: Premium Image Card */}
             <div className="wcu-right-content">
               <div className="wcu-image-container">
-                <img 
-                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Doctor consulting patient" 
+                <img
+                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000"
+                  alt="Doctor consulting patient"
                 />
               </div>
             </div>
@@ -867,6 +867,48 @@ const Home = () => {
             font-weight: 700;
             margin-top: 1px;
           }
+
+          /* Mobile Responsiveness for Quick Services */
+          @media (max-width: 768px) {
+            .qs-marquee-container {
+              mask-image: none !important;
+              -webkit-mask-image: none !important;
+              overflow: visible !important;
+              padding: 0 !important;
+            }
+            .qs-marquee-content {
+              width: 100% !important;
+              flex-direction: column !important;
+              animation: none !important;
+              gap: 20px !important;
+            }
+            .qs-marquee-content .service-card:nth-child(n+6) {
+              display: none !important;
+            }
+            .service-card {
+              width: 100% !important;
+              height: auto !important;
+              transform: none !important;
+              opacity: 1 !important;
+            }
+            .service-card-inner {
+              padding: 30px 20px !important;
+              height: auto !important;
+              gap: 15px !important;
+            }
+            .qs-modal {
+              padding: 30px 24px !important;
+              border-radius: 16px !important;
+            }
+            .qs-modal-title {
+              font-size: 1.4rem !important;
+            }
+            .qs-modal-tagline {
+              font-size: 0.9rem !important;
+              margin-bottom: 16px !important;
+              padding-bottom: 12px !important;
+            }
+          }
         `}</style>
       </section>
 
@@ -955,7 +997,7 @@ const Home = () => {
       {/* 10. Contact Section banner */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-light)', borderTop: '1px solid var(--border-color)' }}>
         <div className="container" style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.2rem', color: 'var(--secondary-color)', marginBottom: '15px' }}>Need Clinical Consultation?</h2>
+          <h2 style={{ fontSize: '2.2rem', color: 'var(--secondary-color)', marginBottom: '15px' }}>Your Health, Our Priority</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 30px' }}>
             Get in touch with Anagha Healthcare's reception desk at Maurya Hospital. Walk-in appointments or queries are answered 24/7.
           </p>

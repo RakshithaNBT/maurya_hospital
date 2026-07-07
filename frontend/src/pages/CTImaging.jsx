@@ -511,6 +511,28 @@ const CTImaging = () => {
             padding: 35px 30px;
           }
         }
+
+        @media (max-width: 576px) {
+          .diagnostic-header-inner {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 10px !important;
+          }
+          .diagnostic-header-close-btn {
+            font-size: 0.85rem !important;
+            align-self: flex-end !important;
+          }
+          .diagnostic-header-title {
+            font-size: 1.15rem !important;
+          }
+          .diagnostic-split-info-col {
+            padding: 24px 20px !important;
+          }
+          .diagnostic-split-badge {
+            font-size: 0.8rem !important;
+            padding: 6px 12px !important;
+          }
+        }
       `}</style>
 
       {/* Premium Banner */}
