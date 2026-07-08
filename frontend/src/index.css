@@ -2255,7 +2255,7 @@ select {
 /* Media Queries */
 @media (max-width: 1200px) {
   .navbar {
-    padding: 15px 24px;
+    padding: 15px 0;
   }
 
   .nav-menu {
