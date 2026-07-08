@@ -12,7 +12,17 @@ import imgDigitalXray from '../assets/DIGITAL X-RAY.png';
 
 const CTImaging = () => {
   const [expandedCard, setExpandedCard] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Handle clicking outside to collapse cards
   useEffect(() => {
@@ -618,7 +628,103 @@ const CTImaging = () => {
             <p>Click on any service below to learn more about our imaging capabilities.</p>
           </div>
 
-          {expandedCard === null ? (
+          {isMobile ? (
+            // Mobile inline accordion view
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+              {scans.map((scan, index) => {
+                const isActive = expandedCard === index;
+                return (
+                  <div key={index} style={{ width: '100%' }}>
+                    <div
+                      className={`diagnostic-card-mobile-header ${isActive ? 'active' : ''}`}
+                      onClick={() => setExpandedCard(isActive ? null : index)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '16px 20px',
+                        backgroundColor: isActive ? 'var(--secondary-color)' : 'white',
+                        color: isActive ? 'white' : 'var(--secondary-color)',
+                        borderRadius: '20px',
+                        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.04)',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        border: isActive ? '2px solid var(--primary-color)' : '1px solid var(--border-color)',
+                        zIndex: 10
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                        <img 
+                          src={scan.image} 
+                          alt={scan.title} 
+                          style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '10px' }} 
+                        />
+                        <h3 style={{ fontSize: '1.05rem', margin: 0, fontWeight: '700', color: isActive ? 'white' : 'var(--secondary-color)' }}>{scan.title}</h3>
+                      </div>
+                      <span style={{ 
+                        fontSize: '1.3rem', 
+                        fontWeight: 'bold', 
+                        color: isActive ? 'white' : 'var(--primary-color)',
+                        transition: 'transform 0.3s',
+                        transform: isActive ? 'rotate(90deg)' : 'none'
+                      }}>
+                        {isActive ? '−' : '+'}
+                      </span>
+                    </div>
+
+                    {isActive && (
+                      <div 
+                        className="diagnostic-mobile-card-body"
+                        style={{
+                          backgroundColor: 'white',
+                          padding: '24px 20px',
+                          borderRadius: '20px',
+                          border: '1px solid var(--border-color)',
+                          marginTop: '8px',
+                          boxShadow: '0 8px 25px rgba(0, 0, 0, 0.05)',
+                          animation: 'acsExpandSlide 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                        }}
+                      >
+                        <img 
+                          src={scan.image} 
+                          alt={scan.title} 
+                          style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '12px', marginBottom: '16px' }} 
+                        />
+                        <h4 style={{ fontSize: '1.2rem', color: 'var(--secondary-color)', fontWeight: '750', marginBottom: '10px', marginTop: 0 }}>{scan.title} Overview</h4>
+                        <p style={{ color: '#444', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '16px' }}>
+                          {scan.details || scan.desc}
+                        </p>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
+                          {(scan.badges || []).map((badge, bIdx) => (
+                            <span 
+                              key={bIdx} 
+                              style={{
+                                fontSize: '0.78rem',
+                                padding: '4px 10px',
+                                backgroundColor: '#fdf3f2',
+                                color: 'var(--primary-color)',
+                                borderRadius: '20px',
+                                fontWeight: '600'
+                              }}
+                            >
+                              ★ {badge}
+                            </span>
+                          ))}
+                        </div>
+                        <a 
+                          href="/contact" 
+                          className="btn btn-primary" 
+                          style={{ width: '100%', textAlign: 'center', display: 'block', padding: '12px', borderRadius: '10px' }}
+                        >
+                          Schedule Scan
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          ) : expandedCard === null ? (
             // Default grid view
             <div className="diagnostic-grid">
               {scans.map((scan, index) => (

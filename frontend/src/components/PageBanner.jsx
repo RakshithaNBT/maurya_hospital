@@ -86,24 +86,15 @@ const PageBanner = ({ title, subtitle, eyebrow, badge = 'TRUSTED HEALTHCARE · M
       </svg>
 
       {/* Glassmorphism trust badge */}
-      <div style={{
-        position: 'absolute', top: '22px', right: '40px',
-        background: 'rgba(255,255,255,0.08)',
-        backdropFilter: 'blur(12px)',
-        border: '1px solid rgba(255,255,255,0.15)',
-        borderRadius: '50px',
-        padding: '8px 20px',
-        display: 'flex', alignItems: 'center', gap: '8px',
-        zIndex: 10,
-      }}>
+      <div className="page-banner-badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#f0a070">
           <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
         </svg>
-        <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.75rem', letterSpacing: '0.08em', fontWeight: 600 }}>{badge}</span>
+        <span className="page-banner-badge-text">{badge}</span>
       </div>
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', width: '100%', padding: '80px 20px 60px' }}>
+      <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', width: '100%', maxWidth: '100%', boxSizing: 'border-box', padding: '80px 20px 60px' }}>
         {/* Radial glow behind heading */}
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
@@ -112,7 +103,7 @@ const PageBanner = ({ title, subtitle, eyebrow, badge = 'TRUSTED HEALTHCARE · M
           filter: 'blur(30px)', zIndex: 0, pointerEvents: 'none',
         }} />
 
-        <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
           {eyebrow && (
             <span style={{
               display: 'inline-block',
@@ -134,32 +125,29 @@ const PageBanner = ({ title, subtitle, eyebrow, badge = 'TRUSTED HEALTHCARE · M
             letterSpacing: '-0.01em',
             lineHeight: 1.15,
             textShadow: '0 2px 30px rgba(0,0,0,0.4)',
+            width: '100%',
+            maxWidth: '100%',
+            boxSizing: 'border-box',
           }}>{title}</h1>
 
           {subtitle && (
             <p style={{
               fontSize: 'clamp(1rem, 2vw, 1.15rem)',
               color: 'rgba(255,255,255,0.82)',
+              width: '100%',
               maxWidth: '580px',
               margin: '0 auto 28px',
               lineHeight: 1.7,
+              boxSizing: 'border-box',
             }}>{subtitle}</p>
           )}
 
           {stats.length > 0 && (
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
+            <div className="page-banner-stats">
               {stats.map((s, i) => (
-                <div key={i} style={{
-                  textAlign: 'center',
-                  background: 'rgba(255,255,255,0.08)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255,255,255,0.13)',
-                  borderRadius: '14px',
-                  padding: '12px 24px',
-                  minWidth: '100px',
-                }}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#f0a070', lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.08em', marginTop: '4px', textTransform: 'uppercase' }}>{s.label}</div>
+                <div key={i} className="page-banner-stat-item">
+                  <div className="page-banner-stat-value">{s.value}</div>
+                  <div className="page-banner-stat-label">{s.label}</div>
                 </div>
               ))}
             </div>

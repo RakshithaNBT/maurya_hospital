@@ -36,7 +36,7 @@ import otRoomNew from '../assets/ot_room_new.jpg';
 import otCarmNew from '../assets/ot_carm_new.jpg';
 import xrayChestStand from '../assets/xray_chest_stand.jpg';
 import hospitalBuilding from '../assets/hospital_building.jpg';
-import hospitalSignboard from '../assets/hospital_signboard.jpg';
+import hospitalSignboard from '../assets/hospital_entrance.png';
 import hospitalEntrance from '../assets/hospital_entrance.png';
 import multiSliceImage from '../assets/multi_slice_advanced_ct_imaging.png';
 import facilityUltrasound from '../assets/facility_ultrasound.png';

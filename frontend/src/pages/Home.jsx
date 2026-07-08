@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import { FaUserMd, FaClinicMedical, FaClock, FaHeartbeat, FaCheckCircle, FaStar, FaShieldAlt } from 'react-icons/fa';
-import hospitalNursingStation from '../assets/hospital_nursing_station.jpg';
+import hospitalBackside from '../assets/hospital_backside.png';
 import heroBanner from '../assets/hero.png';
 
 
@@ -180,7 +180,7 @@ const Home = () => {
         <div className="container">
           <div className="wcu-layout">
             <div className="wcu-image">
-              <img src={hospitalNursingStation} alt="Hospital Reception" />
+              <img src={hospitalBackside} alt="Maurya Hospital Storefront" />
             </div>
             <div>
               <span className="hero-subtitle" style={{ color: 'var(--primary-color)' }}>About Maurya Hospital</span>

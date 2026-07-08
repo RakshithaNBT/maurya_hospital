@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaEye, FaBullseye, FaHospitalAlt, FaLayerGroup, FaAward, FaUserMd, FaLaptopMedical, FaHeartbeat, FaWallet, FaRegHeart, FaFlask, FaChevronRight, FaPills, FaRadiation } from 'react-icons/fa';
 import hospitalBuilding from '../assets/hospital_building.jpg';
-import hospitalBackside from '../assets/hospital_backside.png';
-import hospitalSignboard from '../assets/hospital_signboard.jpg';
+import hospitalEmergencyEntrance from '../assets/hospital_emergency_entrance.jpg';
+import hospitalEntrance from '../assets/hospital_entrance.png';
 
 // Helper component for count-up animations on scroll
 const StatCounter = ({ value, label }) => {
@@ -79,6 +79,16 @@ const About = () => {
   const acsRef = React.useRef(null);
   const [acsVisible, setAcsVisible] = React.useState(false);
   const [activeService, setActiveService] = React.useState(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -265,8 +275,8 @@ const About = () => {
             </div>
             <div>
               <img
-                src={hospitalBackside}
-                alt="Hospital Backside"
+                src={hospitalEmergencyEntrance}
+                alt="Hospital Emergency Entrance"
                 style={{ width: '100%', borderRadius: 'var(--border-radius)', boxShadow: 'var(--shadow-md)' }}
               />
             </div>
@@ -900,8 +910,8 @@ const About = () => {
 
           {/* Cards Grid */}
           <div className="acs-cards-grid">
-            {activeService === null ? (
-              // Default grid view
+            {isMobile ? (
+              // Mobile view: show cards and expand inline when clicked
               [
                 {
                   icon: <FaHeartbeat />,
@@ -943,31 +953,93 @@ const About = () => {
                   badges: ['Digital Radiography', 'Color Doppler Ultrasound', 'Low Dose Exposure', 'Prompt Radiologist Reporting'],
                   color: '#9E2A22'
                 }
-              ].map((card, idx) => (
-                <div
-                  key={idx}
-                  className="acs-card"
-                  onClick={() => setActiveService(idx)}
-                  style={{
-                    transitionDelay: `${idx * 100}ms`,
-                    cursor: 'pointer'
-                  }}
-                >
-                  <div className="acs-card-inner">
-                    <div className="acs-card-icon-wrapper" style={{ color: card.color, borderColor: `${card.color}25` }}>
-                      {card.icon}
+              ].map((card, idx) => {
+                const isActive = activeService === idx;
+                return (
+                  <div key={idx} style={{ width: '100%', marginBottom: '15px' }}>
+                    <div
+                      className={`acs-card ${isActive ? 'active-featured-card' : ''}`}
+                      onClick={() => setActiveService(isActive ? null : idx)}
+                      style={{
+                        cursor: 'pointer',
+                        opacity: 1,
+                        transform: 'none',
+                        width: '100%',
+                        transition: 'all 0.3s ease'
+                      }}
+                    >
+                      <div className="acs-card-inner" style={{ 
+                        flexDirection: 'row', 
+                        justifyContent: 'flex-start', 
+                        alignItems: 'center', 
+                        textAlign: 'left', 
+                        padding: '16px 20px',
+                        gap: '15px' 
+                      }}>
+                        <div className="acs-card-icon-wrapper" style={{ 
+                          color: card.color, 
+                          borderColor: `${card.color}25`, 
+                          marginBottom: 0,
+                          width: '45px',
+                          height: '45px',
+                          fontSize: '1.2rem',
+                          borderRadius: '12px'
+                        }}>
+                          {card.icon}
+                        </div>
+                        <div className="acs-card-content" style={{ 
+                          flexDirection: 'row', 
+                          alignItems: 'center', 
+                          justifyContent: 'space-between',
+                          flexGrow: 1
+                        }}>
+                          <div style={{ textAlign: 'left' }}>
+                            <h3 className="acs-card-title" style={{ 
+                              fontSize: '1.05rem', 
+                              minHeight: 0, 
+                              marginBottom: '2px',
+                              justifyContent: 'flex-start'
+                            }}>{card.title}</h3>
+                            <p className="acs-card-desc" style={{ fontSize: '0.85rem' }}>{card.desc}</p>
+                          </div>
+                          <span style={{ 
+                            fontSize: '1.2rem', 
+                            color: isActive ? 'var(--primary-color)' : 'var(--text-muted)',
+                            marginLeft: '10px',
+                            fontWeight: 'bold',
+                            transition: 'transform 0.3s',
+                            transform: isActive ? 'rotate(90deg)' : 'none'
+                          }}>
+                            {isActive ? '−' : '+'}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="acs-card-content">
-                      <h3 className="acs-card-title">{card.title}</h3>
-                      <p className="acs-card-desc">{card.desc}</p>
-                    </div>
+                    {isActive && (
+                      <div className="acs-expanded-info-box" style={{ 
+                        marginTop: '10px', 
+                        marginBottom: '15px', 
+                        padding: '20px 24px',
+                        borderRadius: '20px'
+                      }}>
+                        <h4 className="acs-expanded-detail-title" style={{ fontSize: '1.1rem', marginBottom: '8px' }}>{card.title} Overview</h4>
+                        <p className="acs-expanded-detail-text" style={{ fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '15px' }}>{card.details}</p>
+                        <div className="acs-expanded-badges">
+                          {card.badges.map((badge, bIdx) => (
+                            <span key={bIdx} className="acs-expanded-badge-item" style={{ fontSize: '0.78rem', padding: '4px 10px' }}>
+                              {badge}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
-              ))
+                );
+              })
             ) : (
-              // Expanded accordion view
-              (() => {
-                const list = [
+              activeService === null ? (
+                // Default grid view
+                [
                   {
                     icon: <FaHeartbeat />,
                     title: 'Emergency Services',
@@ -1008,68 +1080,134 @@ const About = () => {
                     badges: ['Digital Radiography', 'Color Doppler Ultrasound', 'Low Dose Exposure', 'Prompt Radiologist Reporting'],
                     color: '#9E2A22'
                   }
-                ];
-                const active = list[activeService];
-                return (
-                  <div style={{ width: '100%' }}>
-                    {/* Active Featured Card Header */}
-                    <div
-                      className="acs-card active-featured-card"
-                      onClick={() => setActiveService(null)}
-                      style={{ cursor: 'pointer', opacity: 1, transform: 'none' }}
-                    >
-                      <div className="acs-card-inner">
-                        <div className="acs-card-icon-wrapper" style={{ color: active.color, borderColor: `${active.color}25` }}>
-                          {active.icon}
-                        </div>
-                        <div className="acs-card-content">
-                          <h3 className="acs-card-title">{active.title}</h3>
-                          <p className="acs-card-desc">{active.desc}</p>
-                        </div>
+                ].map((card, idx) => (
+                  <div
+                    key={idx}
+                    className="acs-card"
+                    onClick={() => setActiveService(idx)}
+                    style={{
+                      transitionDelay: `${idx * 100}ms`,
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <div className="acs-card-inner">
+                      <div className="acs-card-icon-wrapper" style={{ color: card.color, borderColor: `${card.color}25` }}>
+                        {card.icon}
                       </div>
-                    </div>
-
-                    {/* Accordion Detail Panel */}
-                    <div className="acs-expanded-info-box">
-                      <h4 className="acs-expanded-detail-title">{active.title} Overview</h4>
-                      <p className="acs-expanded-detail-text">{active.details}</p>
-                      <div className="acs-expanded-badges">
-                        {active.badges.map((badge, bIdx) => (
-                          <span key={bIdx} className="acs-expanded-badge-item">
-                            {badge}
-                          </span>
-                        ))}
+                      <div className="acs-card-content">
+                        <h3 className="acs-card-title">{card.title}</h3>
+                        <p className="acs-card-desc">{card.desc}</p>
                       </div>
-                    </div>
-
-                    {/* Grid of other choices */}
-                    <h4 className="acs-other-heading">Explore Other 24/7 Support Services</h4>
-                    <div className="acs-cards-grid">
-                      {list.map((item, idx) => {
-                        if (idx === activeService) return null;
-                        return (
-                          <div
-                            key={idx}
-                            className="acs-card"
-                            onClick={() => setActiveService(idx)}
-                            style={{ cursor: 'pointer', opacity: 1, transform: 'none' }}
-                          >
-                            <div className="acs-card-inner">
-                              <div className="acs-card-icon-wrapper" style={{ color: item.color, borderColor: `${item.color}25` }}>
-                                {item.icon}
-                              </div>
-                              <div className="acs-card-content">
-                                <h3 className="acs-card-title">{item.title}</h3>
-                                <p className="acs-card-desc">{item.desc}</p>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
                     </div>
                   </div>
-                );
-              })()
+                ))
+              ) : (
+                // Expanded accordion view
+                (() => {
+                  const list = [
+                    {
+                      icon: <FaHeartbeat />,
+                      title: 'Emergency Services',
+                      desc: 'Trauma & Critical Care',
+                      details: 'Our emergency department is staffed 24/7 by trauma specialists, emergency physicians, and nursing teams. Equipped with advanced resuscitation bays, cardiac monitors, and direct fast-track pathways to the operating theatre and ICU.',
+                      badges: ['24/7 Trauma Care', 'Emergency Resuscitation', 'Critical Stabilization', 'Ambulance Coordination'],
+                      color: '#9E2A22'
+                    },
+                    {
+                      icon: <FaHospitalAlt />,
+                      title: 'ICU Facility',
+                      desc: '24/7 High-Dependency Unit',
+                      details: 'A state-of-the-art Intensive Care Unit designed for patients requiring continuous life support, close monitoring, and invasive therapeutic interventions. Features high-ratio specialist nursing and absolute infection control protocols.',
+                      badges: ['Bedside Ventilators', '1:1 / 1:2 Nursing Care', 'Isolation Chambers', 'Continuous Vital Monitoring'],
+                      color: '#9E2A22'
+                    },
+                    {
+                      icon: <FaFlask />,
+                      title: 'Laboratory Services',
+                      desc: 'Pathology & Blood Diagnostics',
+                      details: 'Fully automated diagnostic pathology and biochemistry laboratories operating round-the-clock. Delivering rapid and precise hematology, biochemistry, and microbiology reports essential for emergency care.',
+                      badges: ['Fully Automated Assays', 'Rapid Turnaround Reports', 'Hematology & Biochemistry', 'Pathology Consultations'],
+                      color: '#9E2A22'
+                    },
+                    {
+                      icon: <FaPills />,
+                      title: 'Pharmacy Services',
+                      desc: 'Fully-Stocked In-house Meds',
+                      details: 'In-house hospital pharmacy operating 24 hours a day to cater to inpatient, outpatient, and emergency pharmaceutical demands. Fully stocked with high-grade emergency medicines, surgical consumables, and critical therapeutics.',
+                      badges: ['24/7 Open Counter', 'Emergency Formulations', 'Surgical Consumables', 'Verified Cold Chains'],
+                      color: '#9E2A22'
+                    },
+                    {
+                      icon: <FaRadiation />,
+                      title: 'Radiology (X-ray & Ultrasound)',
+                      desc: 'Ultra-fast Imaging Scan',
+                      details: 'Comprehensive diagnostic imaging capabilities containing high-resolution digital X-rays, portable radiography, and emergency ultrasound scans. Ensuring prompt cross-sectional visualization to support clinical decision-making.',
+                      badges: ['Digital Radiography', 'Color Doppler Ultrasound', 'Low Dose Exposure', 'Prompt Radiologist Reporting'],
+                      color: '#9E2A22'
+                    }
+                  ];
+                  const active = list[activeService];
+                  return (
+                    <div style={{ width: '100%' }}>
+                      {/* Active Featured Card Header */}
+                      <div
+                        className="acs-card active-featured-card"
+                        onClick={() => setActiveService(null)}
+                        style={{ cursor: 'pointer', opacity: 1, transform: 'none' }}
+                      >
+                        <div className="acs-card-inner">
+                          <div className="acs-card-icon-wrapper" style={{ color: active.color, borderColor: `${active.color}25` }}>
+                            {active.icon}
+                          </div>
+                          <div className="acs-card-content">
+                            <h3 className="acs-card-title">{active.title}</h3>
+                            <p className="acs-card-desc">{active.desc}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Accordion Detail Panel */}
+                      <div className="acs-expanded-info-box">
+                        <h4 className="acs-expanded-detail-title">{active.title} Overview</h4>
+                        <p className="acs-expanded-detail-text">{active.details}</p>
+                        <div className="acs-expanded-badges">
+                          {active.badges.map((badge, bIdx) => (
+                            <span key={bIdx} className="acs-expanded-badge-item">
+                              {badge}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Grid of other choices */}
+                      <h4 className="acs-other-heading">Explore Other 24/7 Support Services</h4>
+                      <div className="acs-cards-grid">
+                        {list.map((item, idx) => {
+                          if (idx === activeService) return null;
+                          return (
+                            <div
+                              key={idx}
+                              className="acs-card"
+                              onClick={() => setActiveService(idx)}
+                              style={{ cursor: 'pointer', opacity: 1, transform: 'none' }}
+                            >
+                              <div className="acs-card-inner">
+                                <div className="acs-card-icon-wrapper" style={{ color: item.color, borderColor: `${item.color}25` }}>
+                                  {item.icon}
+                                </div>
+                                <div className="acs-card-content">
+                                  <h3 className="acs-card-title">{item.title}</h3>
+                                  <p className="acs-card-desc">{item.desc}</p>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })()
+              )
             )}
           </div>
 
@@ -1544,8 +1682,8 @@ const About = () => {
             </div>
             <div className="wcu-image">
               <img
-                src={hospitalSignboard}
-                alt="Management Panel"
+                src={hospitalEntrance}
+                alt="Maurya Hospital Main Entrance"
                 style={{ border: 'none' }}
               />
             </div>

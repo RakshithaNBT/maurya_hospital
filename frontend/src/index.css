@@ -1166,6 +1166,63 @@ select {
   text-transform: uppercase;
 }
 
+/* Page Banner Styles */
+.page-banner-badge {
+  position: absolute;
+  top: 22px;
+  right: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.page-banner-badge-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.page-banner-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.page-banner-stat-item {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 14px;
+  padding: 12px 24px;
+  min-width: 100px;
+}
+
+.page-banner-stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #f0a070;
+  line-height: 1;
+}
+
+.page-banner-stat-label {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
 /* Contact Page Form & Layout */
 .contact-layout {
   display: grid;
@@ -1231,6 +1288,8 @@ select {
 .contact-text a {
   color: rgba(255, 255, 255, 0.85);
   font-size: 0.9rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .contact-action-buttons {
@@ -2329,6 +2388,41 @@ select {
     margin-left: 60px;
     padding: 20px;
   }
+
+  .page-banner-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 0 auto 16px auto;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .page-banner-stats {
+    gap: 16px;
+  }
+
+  .page-banner-stat-item {
+    padding: 8px 16px;
+    min-width: 80px;
+  }
+
+  .page-banner-stat-value {
+    font-size: 1.3rem;
+  }
+
+  .page-banner-stat-label {
+    font-size: 0.65rem;
+  }
+
+  .contact-info-panel,
+  .contact-form-panel {
+    padding: 28px 24px;
+  }
+
+  .google-map iframe {
+    height: 300px;
+  }
 }
 
 /* Responsive Collage for CT Scan and Diagnostic Imaging page */
@@ -2534,6 +2628,10 @@ a:hover {
   .testimonial-card {
     padding: 24px 20px;
   }
+  .contact-info-panel,
+  .contact-form-panel {
+    padding: 24px 20px !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2546,5 +2644,8 @@ a:hover {
   }
   .logo-text span {
     font-size: 0.6rem !important;
+  }
+  .contact-action-buttons {
+    margin-top: 24px !important;
   }
 }
