@@ -36,7 +36,6 @@ import otRoomNew from '../assets/ot_room_new.jpg';
 import otCarmNew from '../assets/ot_carm_new.jpg';
 import xrayChestStand from '../assets/xray_chest_stand.jpg';
 import hospitalBuilding from '../assets/hospital_building.jpg';
-import hospitalSignboard from '../assets/hospital_entrance.png';
 import hospitalEntrance from '../assets/hospital_entrance.png';
 import multiSliceImage from '../assets/multi_slice_advanced_ct_imaging.png';
 import facilityUltrasound from '../assets/facility_ultrasound.png';
@@ -331,12 +330,6 @@ const DEFAULT_GALLERY = [
     Title: 'Maurya Hospital Outside Building & Parking',
     Category: 'Hospital',
     ImagePath: hospitalBuilding
-  },
-  {
-    GalleryId: '22',
-    Title: 'Maurya Hospital Entrance Signboards & Direction Boards',
-    Category: 'Hospital',
-    ImagePath: hospitalSignboard
   },
   {
     GalleryId: '23',
