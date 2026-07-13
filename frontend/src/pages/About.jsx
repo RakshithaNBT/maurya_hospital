@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaEye, FaBullseye, FaHospitalAlt, FaLayerGroup, FaAward, FaUserMd, FaLaptopMedical, FaHeartbeat, FaWallet, FaRegHeart, FaFlask, FaChevronRight, FaPills, FaRadiation } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import hospitalBuilding from '../assets/hospital_building.jpg';
 import hospitalEmergencyEntrance from '../assets/hospital_emergency_entrance.jpg';
 import hospitalEntrance from '../assets/hospital_entrance.png';
@@ -76,6 +77,7 @@ const StatCounter = ({ value, label }) => {
 };
 
 const About = () => {
+  const { t, i18n } = useTranslation();
   const acsRef = React.useRef(null);
   const [acsVisible, setAcsVisible] = React.useState(false);
   const [activeService, setActiveService] = React.useState(null);
@@ -107,7 +109,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="about-page fade-in">
+    <div className="about-page fade-in lang-fade-transition" key={i18n.language}>
       {/* Premium Banner */}
       <section style={{
         position: 'relative',
@@ -212,7 +214,7 @@ const About = () => {
               border: '1px solid rgba(255,180,150,0.25)',
               borderRadius: '20px',
               background: 'rgba(255,255,255,0.06)',
-            }}>Multi-Speciality Hospital · Since 2018</span>
+            }}>{t('banner.default_badge')}</span>
 
             <h1 style={{
               fontSize: 'clamp(2.2rem, 5vw, 3.6rem)',
@@ -222,7 +224,7 @@ const About = () => {
               letterSpacing: '-0.01em',
               lineHeight: 1.15,
               textShadow: '0 2px 30px rgba(0,0,0,0.4)',
-            }}>About <span style={{ color: '#f0a070' }}>Us</span></h1>
+            }}>{t('nav.about')}</h1>
 
             <p style={{
               fontSize: 'clamp(1rem, 2vw, 1.15rem)',
@@ -231,15 +233,15 @@ const About = () => {
               margin: '0 auto 28px',
               lineHeight: 1.7,
             }}>
-              Learn more about our heritage of healthcare excellence and<br />dedicated clinical systems in Mysuru.
+              {t('banner.about.subtitle')}
             </p>
 
             {/* Stats row */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
               {[
-                { value: '20+', label: 'Specialities' },
-                { value: '24/7', label: 'Emergency Care' },
-                { value: '10K+', label: 'Patients Served' },
+                { value: '20+', labelKey: 'stats_dept' },
+                { value: '24/7', labelKey: 'stat_care' },
+                { value: '10K+', labelKey: 'stat_satisfaction' },
               ].map((s, i) => (
                 <div key={i} style={{
                   textAlign: 'center',
@@ -251,7 +253,7 @@ const About = () => {
                   minWidth: '100px',
                 }}>
                   <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#f0a070', lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.08em', marginTop: '4px', textTransform: 'uppercase' }}>{s.label}</div>
+                  <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.08em', marginTop: '4px', textTransform: 'uppercase' }}>{t(`banner.departments.${s.labelKey}`)}</div>
                 </div>
               ))}
             </div>
@@ -264,13 +266,13 @@ const About = () => {
         <div className="container about-sections">
           <div className="about-intro-grid">
             <div className="about-intro-text">
-              <span className="hero-subtitle" style={{ color: 'var(--primary-color)' }}>About Us</span>
+              <span className="hero-subtitle" style={{ color: 'var(--primary-color)' }}>{t('nav.about')}</span>
               <h2>Maurya Hospital & Anagha Healthcare</h2><br />
               <p style={{ marginBottom: '8px' }}>
-                Located in T.K. Layout, Mysore, our multi-speciality hospital is dedicated to delivering high-quality healthcare with compassion and precision.
+                {t('about.welcome_text_p1')}
               </p>
               <p>
-                Equipped with modern infrastructure and advanced medical technology, we offer a comprehensive range of services across multiple specialities, supported by experienced doctors and skilled healthcare professionals.
+                {t('about.welcome_text_p2')}
               </p>
             </div>
             <div>
@@ -286,26 +288,26 @@ const About = () => {
           <div className="vision-mission-cards">
             <div className="vision-mission-card">
               <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <FaBullseye style={{ color: 'var(--primary-color)' }} /> Our Mission
+                <FaBullseye style={{ color: 'var(--primary-color)' }} /> {t('about.mission_title')}
               </h3>
               <p style={{ color: 'var(--text-muted)' }}>
-                To provide high-quality, comprehensive, and compassionate clinical care at affordable pricing, utilizing state-of-the-art diagnostic and surgical technologies, while keeping the patient's well-being and safety at the center of all actions.
+                {t('about.mission_desc')}
               </p>
             </div>
             <div className="vision-mission-card">
               <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <FaEye style={{ color: 'var(--primary-color)' }} /> Our Vision
+                <FaEye style={{ color: 'var(--primary-color)' }} /> {t('about.vision_title')}
               </h3>
               <p style={{ color: 'var(--text-muted)' }}>
-                To be recognized as a premier healthcare provider and a trusted clinical center of excellence in Karnataka, raising medical service standards through continuous innovation, qualified clinical expertise, and ethical care practices.
+                {t('about.vision_desc')}
               </p>
             </div>
             <div className="vision-mission-card">
               <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg> Our Commitment
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg> {t('about.values_title')}
               </h3>
               <p style={{ color: 'var(--text-muted)' }}>
-                We emphasise accurate diagnosis, effective treatment, patient safety, and overall well-being. Our approach combines advanced medical expertise with personalised care, ensuring the best possible outcomes for every patient. We aim to provide reliable, affordable, and accessible healthcare solutions.
+                {t('about.values_desc')}
               </p>
             </div>
           </div>
@@ -366,10 +368,10 @@ const About = () => {
         <div className="container wcu-redesign-container">
           {/* Premium Statistics Row */}
           <div className="wcu-stats-row">
-            <StatCounter value="25+" label="Years of Excellence" />
-            <StatCounter value="50+" label="Expert Doctors" />
-            <StatCounter value="100K+" label="Happy Patients" />
-            <StatCounter value="24×7" label="Emergency Care" />
+            <StatCounter value="25+" label={i18n.language.startsWith('kn') ? "ಉತ್ಕೃಷ್ಟ ಸೇವಾ ವರ್ಷಗಳು" : "Years of Excellence"} />
+            <StatCounter value="50+" label={t('banner.doctors.stat_docs')} />
+            <StatCounter value="100K+" label={t('home.stats.served_label')} />
+            <StatCounter value="24×7" label={t('home.services.emergency_title')} />
           </div>
         </div>
 
@@ -1636,30 +1638,30 @@ const About = () => {
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-light)' }}>
         <div className="container">
           <div className="section-header">
-            <h2>Hospital Infrastructure</h2>
-            <p>Designed for comfort, security, and emergency efficiency.</p>
+            <h2>{t('about.infra_title')}</h2>
+            <p>{t('about.infra_desc')}</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
             <div className="hospital-card" style={{ padding: '30px', textAlign: 'center' }}>
               <div className="service-icon"><FaHospitalAlt /></div>
-              <h3>Modern Building Layout</h3>
+              <h3>{t('about.infra_p1_title')}</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                Spacious, clean, and fully air-conditioned corridors, waiting lobbies, and consultation rooms mapped for quick clinical access.
+                {t('about.infra_p1_desc')}
               </p>
             </div>
             <div className="hospital-card" style={{ padding: '30px', textAlign: 'center' }}>
               <div className="service-icon"><FaLayerGroup /></div>
-              <h3>Advanced Surgical Zones</h3>
+              <h3>{t('about.infra_p2_title')}</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                State-of-the-art operating theatres with laminar airflow filtration systems to guarantee sterile surgical zones.
+                {t('about.infra_p2_desc')}
               </p>
             </div>
             <div className="hospital-card" style={{ padding: '30px', textAlign: 'center' }}>
               <div className="service-icon"><FaAward /></div>
-              <h3>24/7 Diagnostics Link</h3>
+              <h3>{t('about.infra_p3_title')}</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                A direct structural linkage between critical care ICUs, emergency rooms, digital radiography, and the high-resolution CT imaging room.
+                {t('about.infra_p3_desc')}
               </p>
             </div>
           </div>
@@ -1671,13 +1673,13 @@ const About = () => {
         <div className="container">
           <div className="wcu-layout" style={{ alignItems: 'center' }}>
             <div>
-              <span className="hero-subtitle" style={{ color: 'var(--primary-color)' }}>Clinical Leadership</span>
-              <h2>Management Information</h2><br />
+              <span className="hero-subtitle" style={{ color: 'var(--primary-color)' }}>{t('about.leadership.eyebrow')}</span>
+              <h2>{t('about.leadership.title')}</h2><br />
               <p style={{ color: 'var(--text-muted)', marginBottom: '20px', lineHeight: '1.7' }}>
-                Maurya Hospital is owned and managed by Anagha Healthcare, a committed healthcare organization based in Mysuru, Karnataka. Under the guidance of our leadership team, the hospital prioritizes absolute transparency in clinical outcomes, strict adherence to national health guidelines, and maintaining state-of-the-art support systems.
+                {t('about.leadership.p1')}
               </p>
               <p style={{ color: 'var(--text-muted)', marginBottom: '20px', lineHeight: '1.7' }}>
-                Our directors and senior administrators work in coordination with senior clinical consultants, ensuring that both diagnostic imaging and patient surgical care are delivered with optimal efficiency and care.
+                {t('about.leadership.p2')}
               </p>
             </div>
             <div className="wcu-image">

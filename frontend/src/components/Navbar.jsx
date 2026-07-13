@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { FaPhoneAlt, FaEnvelope, FaClock, FaMapMarkerAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import LanguageToggle from './LanguageToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isOpen) {
@@ -50,11 +53,11 @@ const Navbar = () => {
           <div className="top-bar-right">
             <div className="top-bar-item">
               <FaClock className="text-accent" />
-              <span>24/7 Emergency & CT Scan</span>
+              <span>{t('nav.topbar.emergency_tag')}</span>
             </div>
             <div className="top-bar-item">
               <FaMapMarkerAlt className="text-accent" />
-              <span>Mysuru, Karnataka</span>
+              <span>{t('nav.topbar.location')}</span>
             </div>
           </div>
         </div>
@@ -98,47 +101,50 @@ const Navbar = () => {
           <ul className={`nav-menu ${isOpen ? 'open' : ''}`}>
             <li>
               <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavLinkClick('/')}>
-                Home
+                {t('nav.home')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavLinkClick('/about')}>
-                About Us
+                {t('nav.about')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/departments" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavLinkClick('/departments')}>
-                Departments
+                {t('nav.departments')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/doctors" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavLinkClick('/doctors')}>
-                Doctors
+                {t('nav.doctors')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/facilities" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavLinkClick('/facilities')}>
-                Facilities
+                {t('nav.facilities')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/ct-imaging" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavLinkClick('/ct-imaging')}>
-                CT Imaging
+                {t('nav.ct_imaging')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/gallery" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavLinkClick('/gallery')}>
-                Gallery
+                {t('nav.gallery')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavLinkClick('/contact')}>
-                Contact
+                {t('nav.contact')}
               </NavLink>
             </li>
+            <li className="nav-lang-item">
+              <LanguageToggle />
+            </li>
             <li>
-              <a href="tel:9632999007" className="btn btn-primary btn-sm" style={{ padding: '8px 18px', fontSize: '0.85rem' }}>
-                Emergency: 9632999007
+              <a href="tel:9632999007" className="btn btn-primary btn-sm" style={{ padding: '8px 12px', fontSize: '0.82rem', whiteSpace: 'nowrap' }}>
+                {t('nav.emergency')}
               </a>
             </li>
           </ul>

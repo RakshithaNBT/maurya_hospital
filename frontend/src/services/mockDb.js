@@ -49,7 +49,7 @@ import facilityDaycare from '../assets/facility_daycare.png';
 const DEFAULT_CONTENT = {
   hospital_name: 'Maurya Hospital',
   parent_company: 'Anagha Healthcare',
-  welcome_title: 'Welcome to Maurya Hospital',
+  welcome_title: 'Managed By Anagha Healthcare',
   welcome_text: 'Maurya Hospital, managed by Anagha Healthcare, is a premier multi-specialty healthcare institution in Mysuru, Karnataka. We are dedicated to providing compassionate, state-of-the-art medical services at affordable rates. Our highly experienced clinical team, modern diagnostic facilities (including round-the-clock CT imaging), and advanced operating systems ensure you receive the finest treatment possible.',
   stats_beds: '100+',
   stats_doctors: '25+',
@@ -368,11 +368,11 @@ const initializeDb = () => {
   // because local asset imports have dynamic Vite hashes that break when cached.
 
   // Force reset facilities and gallery to display new local OT/lab/CT/hospital images
-  if (!localStorage.getItem('mh_v26_reset')) {
+  if (!localStorage.getItem('mh_v28_reset')) {
     localStorage.removeItem('mh_facilities');
     localStorage.removeItem('mh_gallery');
     localStorage.removeItem('mh_content');
-    localStorage.setItem('mh_v26_reset', 'true');
+    localStorage.setItem('mh_v28_reset', 'true');
   }
 
   if (!localStorage.getItem('mh_content')) {

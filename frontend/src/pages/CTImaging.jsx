@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PageBanner from '../components/PageBanner';
 import { FaCheckCircle, FaStar, FaShieldAlt, FaWaveSquare, FaImage, FaBrain, FaRegHospital, FaHourglassHalf, FaStethoscope, FaFastForward } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import multiSliceImage from '../assets/multi_slice_advanced_ct_imaging.png';
 import ctScanner from '../assets/ct_scanner.jpg';
 import imgHeadToToe from '../assets/Head to Toe Scan.png';
@@ -11,6 +12,7 @@ import imgPediatric from '../assets/PEDIATRIC LOW DOSE RADIATION SCAN.png';
 import imgDigitalXray from '../assets/DIGITAL X-RAY.png';
 
 const CTImaging = () => {
+  const { t, i18n } = useTranslation();
   const [expandedCard, setExpandedCard] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
@@ -69,55 +71,71 @@ const CTImaging = () => {
     if (glare) glare.style.opacity = '0';
   };
 
-
-
   const scans = [
     {
-      title: 'Head to Toe Scan',
-      desc: 'Full-body screenings for comprehensive trauma diagnosis, systemic oncology staging, or multi-organ checks.',
+      key: 'f4', // Head to toe trauma scan
+      title: t('ct_imaging.f4_title'),
+      desc: t('ct_imaging.f4_desc'),
       image: imgHeadToToe,
-      details: 'Our full-body CT screening is designed to provide comprehensive diagnostic coverage. Commonly utilized in emergency trauma assessments, oncology staging, and multi-organ screening, this scan delivers high-resolution slices from head to toe within seconds.',
-      badges: ['Full Body Screening', 'Emergency Trauma Protocol', 'Oncology Staging', 'Fast Scanning Speed']
+      details: t('ct_imaging.f4_desc'),
+      badges: i18n.language.startsWith('kn') 
+        ? ['ಪೂರ್ಣ ದೇಹದ ಸ್ಕ್ಯಾನಿಂಗ್', 'ತುರ್ತು ಗಾಯದ ಪ್ರೋಟೋಕಾಲ್', 'ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ', 'ಅತಿ ವೇಗದ ಸ್ಕ್ಯಾನಿಂಗ್'] 
+        : ['Full Body Screening', 'Emergency Trauma Protocol', 'Oncology Staging', 'Fast Scanning Speed']
     },
     {
-      title: 'CT Angiography',
-      desc: 'Non-invasive, high-definition visualization of cerebral, coronary, renal, and peripheral blood vessels.',
+      key: 'f2', // CT Angiography
+      title: t('ct_imaging.f2_title'),
+      desc: t('ct_imaging.f2_desc'),
       image: imgAngio,
-      details: 'High-definition, non-invasive visualization of the body\'s vascular network. We specialize in coronary, cerebral, renal, and peripheral angiograms, providing clear 3D renderings of arteries and veins to identify blockages, aneurysms, or malformations.',
-      badges: ['Vascular Visualization', 'Coronary & Cerebral Studies', 'Blockage Mapping', '3D Vascular Rendering']
+      details: t('ct_imaging.f2_desc'),
+      badges: i18n.language.startsWith('kn')
+        ? ['ರಕ್ತನಾಳಗಳ ವೀಕ್ಷಣೆ', 'ಹೃದಯ ಮತ್ತು ಮೆದುಳಿನ ಅಧ್ಯಯನ', 'ರಕ್ತನಾಳಗಳ ಅಡಚಣೆ ಪತ್ತೆ', '3D ರಕ್ತನಾಳ ಚಿತ್ರಣ']
+        : ['Vascular Visualization', 'Coronary & Cerebral Studies', 'Blockage Mapping', '3D Vascular Rendering']
     },
     {
-      title: 'Dual - Triple Phase Imaging',
-      desc: 'Contrast-enhanced dynamic diagnostic imaging to analyze abdominal lesions, liver pathology, and renal concerns.',
+      key: 'f3', // Dual / Triple Phase Imaging
+      title: t('ct_imaging.f3_title'),
+      desc: t('ct_imaging.f3_desc'),
       image: imgDualTriple,
-      details: 'Contrast-enhanced dynamic imaging tailored for abdomen and pelvis investigations. By capturing scans at precise intervals (arterial, venous, and delayed phases), our specialists can accurately differentiate between benign and malignant lesions.',
-      badges: ['Dynamic Contrast Phases', 'Liver & Renal Pathology', 'Abdominal Lesions', 'High Contrast Precision']
+      details: t('ct_imaging.f3_desc'),
+      badges: i18n.language.startsWith('kn')
+        ? ['ಡೈನಾಮಿಕ್ ಕಾಂಟ್ರಾಸ್ಟ್ ಹಂತಗಳು', 'ಯಕೃತ್ತು ಮತ್ತು ಮೂತ್ರಪಿಂಡಗಳ ತಪಾಸಣೆ', 'ಹೊಟ್ಟೆಯ ಗಾಯಗಳು', 'ನಿಖರವಾದ ವ್ಯತ್ಯಾಸ']
+        : ['Dynamic Contrast Phases', 'Liver & Renal Pathology', 'Abdominal Lesions', 'High Contrast Precision']
     },
     {
-      title: '3D Reconstruction',
-      desc: 'Volumetric rendering of skeletal structures, joint fractures, and soft tissues for precise pre-surgical planning.',
+      key: 'f1', // 3D Reconstruction Studies
+      title: t('ct_imaging.f1_title'),
+      desc: t('ct_imaging.f1_desc'),
       image: img3d,
-      details: 'Transforming standard axial slices into highly accurate 3D volume-rendered models. This advanced visualization is critical for orthopedic fracture mapping, complex surgical planning, and post-traumatic reconstructive assessments.',
-      badges: ['3D Volumetric Rendering', 'Orthopedic Planning', 'Surgical Navigation', 'High Clarity Models']
+      details: t('ct_imaging.f1_desc'),
+      badges: i18n.language.startsWith('kn')
+        ? ['3D ವಾಲ್ಯೂಮೆಟ್ರಿಕ್ ರೆಂಡರಿಂಗ್', 'ಮೂಳೆ ಶಸ್ತ್ರಚಿಕಿತ್ಸಾ ಯೋಜನೆ', 'ಶಸ್ತ್ರಚಿಕಿತ್ಸಾ ಮಾರ್ಗಸೂಚಿ', 'ಸ್ಪಷ್ಟ ಮಾದರಿಗಳು']
+        : ['3D Volumetric Rendering', 'Orthopedic Planning', 'Surgical Navigation', 'High Clarity Models']
     },
     {
-      title: 'Pediatric Low Dose Radiation Scan',
-      desc: 'Optimized scanning protocols limiting radiation dosage specifically for infants and young children.',
+      key: 'f5', // Pediatric Low-Dose Scan
+      title: t('ct_imaging.f5_title'),
+      desc: t('ct_imaging.f5_desc'),
       image: imgPediatric,
-      details: 'Specially calibrated scanning protocols dedicated to our youngest patients. By implementing advanced dose modulation and AI-based image reconstruction, we minimize radiation exposure while maintaining absolute diagnostic clarity.',
-      badges: ['Calibrated Dose Modulation', 'AI Image Reconstruction', 'Pediatric Safe Protocols', 'Gentle Diagnostic Care']
+      details: t('ct_imaging.f5_desc'),
+      badges: i18n.language.startsWith('kn')
+        ? ['ವಿಕಿರಣ ಪ್ರಮಾಣ ನಿಯಂತ್ರಣ', 'AI ಇಮೇಜ್ ರೀಕನ್ಸ್ಟ್ರಕ್ಷನ್', 'ಮಕ್ಕಳಿಗೆ ಸುರಕ್ಷಿತ', 'ಮೃದುವಾದ ಕಾಳಜಿ']
+        : ['Calibrated Dose Modulation', 'AI Image Reconstruction', 'Pediatric Safe Protocols', 'Gentle Diagnostic Care']
     },
     {
-      title: 'Digital X-Ray',
-      desc: 'High-frequency digital radiography generating clean skeletal, orthotic, and thoracic imagery with minimal exposure.',
+      key: 'f6', // Low-Dose Radiation Imaging
+      title: t('ct_imaging.f6_title'),
+      desc: t('ct_imaging.f6_desc'),
       image: imgDigitalXray,
-      details: 'High-frequency digital radiography generating clean skeletal and thoracic imagery. The digital detector plates ensure instant image availability, minimal patient positioning discomfort, and significantly lower radiation compared to traditional X-rays.',
-      badges: ['High Frequency Radiography', 'Chest & Skeletal Studies', 'Low Radiation Exposure', 'Instant Image Access']
+      details: t('ct_imaging.f6_desc'),
+      badges: i18n.language.startsWith('kn')
+        ? ['ಹೈ ಫ್ರೀಕ್ವೆನ್ಸಿ ರೇಡಿಯೋಗ್ರಫಿ', 'ಎದೆ ಮತ್ತು ಮೂಳೆಗಳ ತಪಾಸಣೆ', 'ಕಡಿಮೆ ವಿಕಿರಣ ಪ್ರಮಾಣ', 'ತಕ್ಷಣದ ಚಿತ್ರ ವೀಕ್ಷಣೆ']
+        : ['High Frequency Radiography', 'Chest & Skeletal Studies', 'Low Radiation Exposure', 'Instant Image Access']
     }
   ];
 
   return (
-    <div className="ct-imaging-page fade-in">
+    <div className="ct-imaging-page fade-in lang-fade-transition" key={i18n.language}>
       <style>{`
         .diagnostic-services-container {
           position: relative;
@@ -548,12 +566,12 @@ const CTImaging = () => {
       {/* Premium Banner */}
       <PageBanner
         eyebrow="Advanced Diagnostic Imaging · Mysuru"
-        title={<>Multi Slice Advanced <span style={{ color: '#f0a070' }}>CT Imaging</span></>}
-        subtitle="High-definition volumetric scanning, low radiation protocols, and 24/7 diagnostic support."
+        title={<>{t('nav.ct_imaging')}</>}
+        subtitle={t('ct_imaging.subtitle')}
         stats={[
-          { value: '128', label: 'Slice CT Scanner' },
-          { value: '24/7', label: 'Scan Availability' },
-          { value: 'Low', label: 'Radiation Dose' },
+          { value: '128', label: i18n.language.startsWith('kn') ? 'ಸ್ಲೈಸ್ ಸಿಟಿ ಸ್ಕ್ಯಾನರ್' : 'Slice CT Scanner' },
+          { value: '24/7', label: i18n.language.startsWith('kn') ? 'ಸ್ಕ್ಯಾನ್ ಲಭ್ಯತೆ' : 'Scan Availability' },
+          { value: 'Low', label: i18n.language.startsWith('kn') ? 'ಕಡಿಮೆ ವಿಕಿರಣ ಪ್ರಮಾಣ' : 'Low Radiation Dose' },
         ]}
       />
 
@@ -562,13 +580,17 @@ const CTImaging = () => {
         <div className="container">
           <div className="wcu-layout" style={{ alignItems: 'flex-start' }}>
             <div>
-              <span className="hero-subtitle" style={{ color: 'var(--primary-color)' }}>Advanced Clinical Imaging</span>
-              <h2>State-of-the-Art CT Scanning</h2><br />
+              <span className="hero-subtitle" style={{ color: 'var(--primary-color)' }}>{i18n.language.startsWith('kn') ? 'ಸುಧಾರಿತ ವೈದ್ಯಕೀಯ ಚಿತ್ರಣ' : 'Advanced Clinical Imaging'}</span>
+              <h2>{i18n.language.startsWith('kn') ? 'ಅತ್ಯಾಧುನಿಕ ಸಿಟಿ ಸ್ಕ್ಯಾನಿಂಗ್ ವಿಭಾಗ' : 'State-of-the-Art CT Scanning'}</h2><br />
               <p style={{ color: 'var(--text-muted)', marginBottom: '20px', lineHeight: '1.7' }}>
-                At Maurya Hospital, we believe that clear and prompt diagnostics form the core of effective clinical treatments. Managed under Anagha Healthcare, our radiology department houses high-specification GE multislice CT systems.
+                {i18n.language.startsWith('kn') 
+                  ? 'ಮೌರ್ಯ ಆಸ್ಪತ್ರೆಯಲ್ಲಿ, ಸ್ಪಷ್ಟ ಮತ್ತು ತ್ವರಿತ ರೋಗನಿರ್ಣಯವು ಪರಿಣಾಮಕಾರಿ ಕ್ಲಿನಿಕಲ್ ಚಿಕಿತ್ಸೆಗಳ ಕೇಂದ್ರವಾಗಿದೆ ಎಂದು ನಾವು ನಂಬುತ್ತೇವೆ. ಅನಘಾ ಹೆಲ್ತ್‌ಕೇರ್ ಅಡಿಯಲ್ಲಿ ನಿರ್ವಹಿಸಲ್ಪಡುವ ನಮ್ಮ ರೇಡಿಯಾಲಜಿ ವಿಭಾಗವು ಅತ್ಯಾಧುನಿಕ ಸಿಟಿ ಸ್ಕ್ಯಾನ್ ಸಿಸ್ಟಮ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.'
+                  : 'At Maurya Hospital, we believe that clear and prompt diagnostics form the core of effective clinical treatments. Managed under Anagha Healthcare, our radiology department houses high-specification GE multislice CT systems.'}
               </p>
               <p style={{ color: 'var(--text-muted)', marginBottom: '20px', lineHeight: '1.7' }}>
-                We prioritize patient safety by deploying low-dose protocols and automated exposure modulation. Our diagnostic workflows are fully integrated with digital databases, allowing our reporting panels to generate results rapidly.
+                {i18n.language.startsWith('kn')
+                  ? 'ಕಡಿಮೆ-ಡೋಸ್ ಪ್ರೋಟೋಕಾಲ್ಗಳು ಮತ್ತು ಸ್ವಯಂಚಾಲಿತ ಮಾನ್ಯತೆ ನಿಯಂತ್ರಣವನ್ನು ನಿಯೋಜಿಸುವ ಮೂಲಕ ನಾವು ರೋಗಿಯ ಸುರಕ್ಷತೆಗೆ ಆದ್ಯತೆ ನೀಡುತ್ತೇವೆ. ನಮ್ಮ ವರದಿ ಮಾಡುವ ಪ್ಯಾನೆಲ್‌ಗಳು ಫಲಿತಾಂಶಗಳನ್ನು ತ್ವರಿತವಾಗಿ ರಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತವೆ.'
+                  : 'We prioritize patient safety by deploying low-dose protocols and automated exposure modulation. Our diagnostic workflows are fully integrated with digital databases, allowing our reporting panels to generate results rapidly.'}
               </p>
 
               <div className="ct-highlights" style={{ marginTop: '30px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -577,9 +599,9 @@ const CTImaging = () => {
                     <FaBrain style={{ fontSize: '1.4rem' }} />
                   </div>
                   <div>
-                    <h4 style={{ margin: '0 0 5px 0', color: 'var(--secondary-color)', fontSize: '1.1rem' }}>Artificial Intelligence</h4>
+                    <h4 style={{ margin: '0 0 5px 0', color: 'var(--secondary-color)', fontSize: '1.1rem' }}>{i18n.language.startsWith('kn') ? 'ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆ (AI)' : 'Artificial Intelligence'}</h4>
                     <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.5' }}>
-                      AI-assisted algorithms highlighting micro-lesions, speeding up workflows, and improving accuracy.
+                      {i18n.language.startsWith('kn') ? 'ಮೈಕ್ರೋ-ಗಾಯಗಳನ್ನು ಪತ್ತೆಹಚ್ಚುವ ಮೂಲಕ ನಿಖರತೆಯನ್ನು ಹೆಚ್ಚಿಸುವ ಮತ್ತು ಕೆಲಸವನ್ನು ವೇಗಗೊಳಿಸುವ AI ಅಲ್ಗಾರಿದಮ್‌ಗಳು.' : 'AI-assisted algorithms highlighting micro-lesions, speeding up workflows, and improving accuracy.'}
                     </p>
                   </div>
                 </div>
@@ -589,9 +611,9 @@ const CTImaging = () => {
                     <FaShieldAlt style={{ fontSize: '1.4rem' }} />
                   </div>
                   <div>
-                    <h4 style={{ margin: '0 0 5px 0', color: 'var(--secondary-color)', fontSize: '1.1rem' }}>Low Radiation</h4>
+                    <h4 style={{ margin: '0 0 5px 0', color: 'var(--secondary-color)', fontSize: '1.1rem' }}>{i18n.language.startsWith('kn') ? 'ಕಡಿಮೆ ವಿಕಿರಣ' : 'Low Radiation'}</h4>
                     <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.5' }}>
-                      Automatic dose modulating software ensuring diagnostic clarity at minimal exposure levels.
+                      {i18n.language.startsWith('kn') ? 'ಕನಿಷ್ಠ ವಿಕಿರಣದೊಂದಿಗೆ ಅದ್ಭುತ ಚಿತ್ರದ ಸ್ಪಷ್ಟತೆಯನ್ನು ಖಚಿತಪಡಿಸುವ ಸಾಫ್ಟ್‌ವೇರ್ ನಿಯಂತ್ರಣ.' : 'Automatic dose modulating software ensuring diagnostic clarity at minimal exposure levels.'}
                     </p>
                   </div>
                 </div>
@@ -601,9 +623,9 @@ const CTImaging = () => {
                     <FaFastForward style={{ fontSize: '1.4rem' }} />
                   </div>
                   <div>
-                    <h4 style={{ margin: '0 0 5px 0', color: 'var(--secondary-color)', fontSize: '1.1rem' }}>Fast Scan</h4>
+                    <h4 style={{ margin: '0 0 5px 0', color: 'var(--secondary-color)', fontSize: '1.1rem' }}>{i18n.language.startsWith('kn') ? 'ತ್ವರಿತ ಸ್ಕ್ಯಾನ್' : 'Fast Scan'}</h4>
                     <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.5' }}>
-                      Rapid imaging cycles capturing clear scans even in emergency trauma situations where patient movement is common.
+                      {i18n.language.startsWith('kn') ? 'ತುರ್ತು ಸಂದರ್ಭಗಳಲ್ಲಿ ಅತಿ ವೇಗವಾಗಿ ಸ್ಕ್ಯಾನ್ ಮಾಡುವ ಮತ್ತು ನಿಖರ ಚಿತ್ರಗಳನ್ನು ನೀಡುವ ಚಕ್ರಗಳು.' : 'Rapid imaging cycles capturing clear scans even in emergency trauma situations where patient movement is common.'}
                     </p>
                   </div>
                 </div>
@@ -624,8 +646,10 @@ const CTImaging = () => {
       <section className="section-padding" style={{ backgroundColor: '#faf9f8', borderTop: '1px solid var(--border-color)', position: 'relative' }}>
         <div className="container diagnostic-services-container" ref={containerRef}>
           <div className="section-header" style={{ position: 'relative', zIndex: 42 }}>
-            <h2>Our Advanced CT Offerings</h2>
-            <p>Click on any service below to learn more about our imaging capabilities.</p>
+            <h2>{t('ct_imaging.features_title')}</h2>
+            <p>
+              {i18n.language.startsWith('kn') ? 'ಹೆಚ್ಚಿನ ಮಾಹಿತಿ ಪಡೆಯಲು ಕೆಳಗಿನ ಯಾವುದೇ ಸೇವೆಯ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ.' : 'Click on any service below to learn more about our imaging capabilities.'}
+            </p>
           </div>
 
           {isMobile ? (
@@ -690,7 +714,9 @@ const CTImaging = () => {
                           alt={scan.title} 
                           style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '12px', marginBottom: '16px' }} 
                         />
-                        <h4 style={{ fontSize: '1.2rem', color: 'var(--secondary-color)', fontWeight: '750', marginBottom: '10px', marginTop: 0 }}>{scan.title} Overview</h4>
+                        <h4 style={{ fontSize: '1.2rem', color: 'var(--secondary-color)', fontWeight: '750', marginBottom: '10px', marginTop: 0 }}>
+                          {scan.title} {i18n.language.startsWith('kn') ? 'ಅವಲೋಕನ' : 'Overview'}
+                        </h4>
                         <p style={{ color: '#444', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '16px' }}>
                           {scan.details || scan.desc}
                         </p>
@@ -716,7 +742,7 @@ const CTImaging = () => {
                           className="btn btn-primary" 
                           style={{ width: '100%', textAlign: 'center', display: 'block', padding: '12px', borderRadius: '10px' }}
                         >
-                          Schedule Scan
+                          {i18n.language.startsWith('kn') ? 'ಸ್ಕ್ಯಾನ್ ನಿಗದಿಪಡಿಸಿ' : 'Schedule Scan'}
                         </a>
                       </div>
                     )}
@@ -743,10 +769,10 @@ const CTImaging = () => {
                       <p className="diagnostic-desc">{scan.desc}</p>
                       <div className="diagnostic-features">
                         <div className="feature-badge">
-                          <FaCheckCircle className="feature-icon" /> 24/7 Availability
+                          <FaCheckCircle className="feature-icon" /> {i18n.language.startsWith('kn') ? '24/7 ಲಭ್ಯತೆ' : '24/7 Availability'}
                         </div>
                         <div className="feature-badge">
-                          <FaStar className="feature-icon" /> Advanced Tech
+                          <FaStar className="feature-icon" /> {i18n.language.startsWith('kn') ? 'ಸುಧಾರಿತ ತಂತ್ರಜ್ಞಾನ' : 'Advanced Tech'}
                         </div>
                       </div>
                     </div>
@@ -773,7 +799,9 @@ const CTImaging = () => {
                         <FaCheckCircle className="diagnostic-header-check-icon" />
                         <h3 className="diagnostic-header-title">{activeScan.title}</h3>
                       </div>
-                      <span className="diagnostic-header-close-btn">✕ Click to Close</span>
+                      <span className="diagnostic-header-close-btn">
+                        {i18n.language.startsWith('kn') ? '✕ ಮುಚ್ಚಲು ಕ್ಲಿಕ್ ಮಾಡಿ' : '✕ Click to Close'}
+                      </span>
                     </div>
                   </div>
 
@@ -794,7 +822,7 @@ const CTImaging = () => {
 
                     {/* Details side */}
                     <div className="diagnostic-split-info-col">
-                      <h3>{activeScan.title} Overview</h3>
+                      <h3>{activeScan.title} {i18n.language.startsWith('kn') ? 'ಅವಲೋಕನ' : 'Overview'}</h3>
                       <p className="diagnostic-split-desc">{activeScan.details || activeScan.desc}</p>
                       
                       <div className="diagnostic-split-badges">
@@ -806,7 +834,7 @@ const CTImaging = () => {
                       </div>
 
                       <a href="/contact" className="btn btn-primary" style={{ marginTop: '25px', display: 'inline-block' }}>
-                        Schedule Scan
+                        {i18n.language.startsWith('kn') ? 'ಸ್ಕ್ಯಾನ್ ನಿಗದಿಪಡಿಸಿ' : 'Schedule Scan'}
                       </a>
                     </div>
 
@@ -814,7 +842,9 @@ const CTImaging = () => {
 
                   {/* Other Scan Offerings grid */}
                   <div className="diagnostic-other-offerings-section">
-                    <h4 className="diagnostic-other-title">EXPLORE OTHER CT OFFERINGS</h4>
+                    <h4 className="diagnostic-other-title">
+                      {i18n.language.startsWith('kn') ? 'ಇತರ ಸಿಟಿ ಸೇವೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ' : 'EXPLORE OTHER CT OFFERINGS'}
+                    </h4>
                     <div className="diagnostic-other-grid">
                       {scans.map((scan, index) => {
                         if (index === expandedCard) return null;
@@ -848,13 +878,19 @@ const CTImaging = () => {
       {/* Banner Call-To-Action */}
       <section className="section-padding">
         <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
-          <h2 style={{ fontSize: '2rem', color: 'var(--secondary-color)', marginBottom: '20px' }}>Need an Emergency CT Scan?</h2>
+          <h2 style={{ fontSize: '2rem', color: 'var(--secondary-color)', marginBottom: '20px' }}>
+            {i18n.language.startsWith('kn') ? 'ತುರ್ತು ಸಿಟಿ ಸ್ಕ್ಯಾನ್ ಅಗತ್ಯವಿದೆಯೇ?' : 'Need an Emergency CT Scan?'}
+          </h2>
           <p style={{ color: 'var(--text-muted)', marginBottom: '30px' }}>
-            Our scanning rooms work 24/7, 365 days a year to cater to urgent clinical requirements, vascular emergencies, and trauma investigations.
+            {i18n.language.startsWith('kn') 
+              ? 'ನಮ್ಮ ಸಿಟಿ ಸ್ಕ್ಯಾನ್ ವಿಭಾಗವು ದಿನದ 24 ಗಂಟೆಯೂ ವರ್ಷದ 365 ದಿನಗಳೂ ತುರ್ತು ರೋಗಿಗಳಿಗೆ ಲಭ್ಯವಿರುತ್ತದೆ.'
+              : 'Our scanning rooms work 24/7, 365 days a year to cater to urgent clinical requirements, vascular emergencies, and trauma investigations.'}
           </p>
           <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="tel:08214534545" className="btn btn-primary">Call Reception: 0821-4534545</a>
-            <a href="tel:9632999007" className="btn btn-secondary">Emergency: 9632999007</a>
+            <a href="tel:08214534545" className="btn btn-primary">
+              {i18n.language.startsWith('kn') ? 'ಸಹಾಯವಾಣಿ: 0821-4534545' : 'Call Reception: 0821-4534545'}
+            </a>
+            <a href="tel:9632999007" className="btn btn-secondary">{t('nav.emergency')}</a>
           </div>
         </div>
       </section>

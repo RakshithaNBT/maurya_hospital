@@ -1,0 +1,576 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "departments": "Departments",
+    "doctors": "Doctors",
+    "facilities": "Facilities",
+    "ct_imaging": "CT Imaging",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "emergency": "Emergency: 9632999007",
+    "topbar": {
+      "emergency_tag": "24/7 Emergency & CT Scan",
+      "location": "Mysuru, Karnataka"
+    }
+  },
+  "footer": {
+    "desc": "Managed by Anagha Healthcare, Maurya Hospital is a premier multi-specialty medical facility in Mysuru. We deliver high-quality, compassionate clinical care with modern technologies.",
+    "quick_links": "Quick Links",
+    "specialties": "Specialties",
+    "contact_us": "Contact Us",
+    "rights": "Maurya Hospital. All Rights Reserved.",
+    "managed_by": "Managed by Anagha Healthcare, Mysuru, Karnataka."
+  },
+  "banner": {
+    "default_badge": "TRUSTED HEALTHCARE · MYSURU",
+    "about": {
+      "eyebrow": "ABOUT MAURYA HOSPITAL",
+      "title": "Caring for Your Health Since 2018",
+      "subtitle": "Learn about our mission, vision, values, and the expert clinical panel committed to your healthcare journey.",
+      "stat_beds": "Beds",
+      "stat_specialists": "Specialists",
+      "stat_satisfaction": "Satisfaction"
+    },
+    "departments": {
+      "eyebrow": "EXPERTISE & SPECIALTIES",
+      "title": "Our Clinical Departments",
+      "subtitle": "Discover our comprehensive range of specialized medical divisions, equipped with modern infrastructure and expert care.",
+      "stat_dept": "Departments",
+      "stat_consultants": "Consultants",
+      "stat_care": "24/7 Support"
+    },
+    "doctors": {
+      "eyebrow": "OUR MEDICAL TEAM",
+      "title": "Meet Our Doctors",
+      "subtitle": "Our highly experienced specialists are committed to delivering the highest standards of healthcare.",
+      "stat_docs": "Doctors",
+      "stat_experience": "Avg Experience",
+      "stat_avail": "Availability"
+    },
+    "facilities": {
+      "eyebrow": "State-of-the-Art Infrastructure",
+      "title": "Our Facilities",
+      "subtitle": "We support patient care with top-tier infrastructure, operating theatres, diagnostic services, and inpatient support.",
+      "stat_ot": "Operation Theatres",
+      "stat_icu": "Critical Care Unit",
+      "stat_lab": "Lab & Diagnostics"
+    },
+    "ct_imaging": {
+      "eyebrow": "ROUND-THE-CLOCK PRECISION",
+      "title": "24/7 Advanced CT Scan Services",
+      "subtitle": "Equipped with the cutting-edge Siemens Somatom Scope CT Scanner. Precise, fast, and ultra-low radiation diagnostic services.",
+      "stat_ct_scan": "CT Scanner",
+      "stat_hours": "Open Hours",
+      "stat_reports": "Report Delivery"
+    },
+    "gallery": {
+      "eyebrow": "Maurya Hospital · Visual Tour",
+      "title": "Hospital Gallery",
+      "subtitle": "A visual overview of our infrastructure, medical technology, health events, and celebrations.",
+      "stat_photos": "Photos",
+      "stat_categories": "Categories",
+      "stat_est": "Est. Year"
+    },
+    "contact": {
+      "eyebrow": "GET IN TOUCH",
+      "title": "Contact Maurya Hospital",
+      "subtitle": "Reach out to us for appointments, general enquiries, or medical support. Our helpdesk is available 24/7.",
+      "stat_help": "Help Desk",
+      "stat_booking": "Appt Slots",
+      "stat_response": "Avg Response"
+    }
+  },
+  "home": {
+    "read_more": "Read More About Us",
+    "welcome_title": "Welcome to Maurya Hospital",
+    "welcome_text": "Maurya Hospital, managed by Anagha Healthcare, is a multi-specialty healthcare institution in Mysuru, Karnataka. We are dedicated to providing compassionate, state-of-the-art medical services at affordable rates. Our highly experienced clinical team, modern diagnostic facilities (including round-the-clock CT imaging), and advanced operating systems ensure you receive the finest treatment possible.",
+    "stats": {
+      "beds": "100+",
+      "beds_label": "Beds & Inpatient Care",
+      "doctors": "25+",
+      "doctors_label": "Experienced Specialists",
+      "staff": "150+",
+      "staff_label": "Dedicated Clinical Staff",
+      "served": "50,000+",
+      "served_label": "Satisfied Patients Served"
+    },
+    "why_choose_us": {
+      "title": "Why Choose Maurya Hospital?",
+      "subtitle": "Trusted healthcare with experienced specialists, advanced technology and compassionate care.",
+      "features": {
+        "docs_title": "Experienced Doctors",
+        "docs_desc": "Highly skilled clinical team and consulting specialists with years of proven medical practice.",
+        "equip_title": "Advanced Medical Equipment",
+        "equip_desc": "Equipped with modern diagnostic systems and advanced operating theatres.",
+        "afford_title": "Affordable Treatment",
+        "afford_desc": "Transparent, ethical and cost-effective healthcare.",
+        "patient_title": "Patient-Centered Care",
+        "patient_desc": "Personalized treatment plans with compassionate nursing support.",
+        "emergency_title": "24/7 Emergency Support",
+        "emergency_desc": "Round-the-clock emergency services and critical care."
+      }
+    },
+    "spotlight": {
+      "tagline": "Critical care and diagnostic support services, available 24/7.",
+      "title": "Critical Support Services"
+    },
+    "services": {
+      "emergency_title": "24/7 Emergency Care",
+      "emergency_desc": "Critical care and rapid trauma response operating round-the-clock with expert physicians.",
+      "ct_title": "Advanced CT Imaging",
+      "ct_desc": "Modern diagnostic imaging, CT Angiography, and 3D reconstructions, available 24/7.",
+      "doctors_title": "Expert Clinical Panel",
+      "doctors_desc": "Specialists in Orthopedics, Neurosurgery, Plastic Surgery, Oncology, and Gynecology.",
+      "icu_title": "Intensive Care Unit",
+      "icu_desc": "Fully-monitored high-dependency ICU chambers with life support systems and ventilators.",
+      "insurance_title": "Insurance Accepted",
+      "insurance_desc": "All major insurance, TPA, and Government schemes are accepted here."
+    },
+    "service_details": {
+      "emergency": {
+        "title": "24/7 Emergency Care",
+        "tagline": "Immediate life-saving response, every hour of every day.",
+        "p1": "Round-the-clock emergency department staffed by qualified physicians and trained nursing teams.",
+        "p2": "Rapid trauma assessment, stabilisation, and transfer protocols in place.",
+        "p3": "Dedicated ambulance coordination and pre-hospital communication.",
+        "p4": "Advanced resuscitation equipment and defibrillators on standby.",
+        "p5": "Direct fast-track access to ICU, OT, and radiology in emergencies."
+      },
+      "ct": {
+        "title": "Advanced CT Imaging",
+        "tagline": "Precision diagnostics powered by state-of-the-art technology.",
+        "p1": "Multi-slice CT scanner providing high-resolution cross-sectional images.",
+        "p2": "CT Angiography for cardiac, neuro, and vascular studies.",
+        "p3": "3D reconstruction capability for orthopaedic and surgical planning.",
+        "p4": "Available round-the-clock including emergency and acute-care scans.",
+        "p5": "Expert radiologist interpretation with rapid report turnaround."
+      },
+      "doctors": {
+        "title": "Expert Clinical Panel",
+        "tagline": "Highly qualified specialists across multiple disciplines.",
+        "p1": "Resident and visiting consultants in Orthopaedics, Neurosurgery, and Plastic Surgery.",
+        "p2": "Dedicated Oncology, Gynaecology, and General Surgery specialists.",
+        "p3": "Multi-disciplinary team (MDT) case reviews for complex conditions.",
+        "p4": "Outpatient consultation hours 6 days a week with flexible slots.",
+        "p5": "In-house and tele-consultation available for follow-up care."
+      },
+      "icu": {
+        "title": "Intensive Care Unit",
+        "tagline": "Critical care with continuous monitoring and expert intervention.",
+        "p1": "Fully equipped ICU with bedside cardiac monitoring, pulse oximetry, and ventilators.",
+        "p2": "Dedicated intensivist coverage and 1:2 nurse-to-patient ratio.",
+        "p3": "Isolation bays available for infection control and post-operative recovery.",
+        "p4": "Integrated with emergency and surgical departments for seamless transfers.",
+        "p5": "Family communication protocols and regular clinical briefings."
+      },
+      "insurance": {
+        "title": "Insurance Accepted",
+        "tagline": "Hassle-free cashless treatment across all major schemes.",
+        "p1": "Empanelled with all major TPA (Third-Party Administrator) networks.",
+        "p2": "Government health schemes including Ayushman Bharat / PM-JAY accepted.",
+        "p3": "Karnataka state government and ESIC beneficiaries covered.",
+        "p4": "Dedicated insurance desk for pre-authorisation and claim assistance.",
+        "p5": "Transparent billing with detailed cost estimates provided upfront."
+      },
+      "btn_book": "Book an Appointment"
+    },
+    "testimonials": {
+      "title": "Patient Testimonials",
+      "subtitle": "Read what our patients say about their clinical treatment and recovery experiences at Maurya Hospital.",
+      "t1": {
+        "text": "\"The clinical team at Maurya Hospital showed incredible dedication when my father was admitted to the Emergency department. The round-the-clock CT scan and prompt neurosurgery team saved his life.\"",
+        "author": "Ravi Kumar",
+        "role": "Son of Patient"
+      },
+      "t2": {
+        "text": "\"I underwent a complex orthopedic surgery at Maurya Hospital under Dr. Bhavana's team. The modular operation theatre is advanced and the post-operative nursing care was outstanding.\"",
+        "author": "Sunitha Rao",
+        "role": "Outpatient Recovery"
+      },
+      "t3": {
+        "text": "\"Their dialysis unit is extremely sterile and comfortable. The nursing staff is compassionate and ensures the treatment session is seamless every single time. Truly blessed to have them in Mysuru.\"",
+        "author": "Mahesh Gowda",
+        "role": "Chronic Care Patient"
+      }
+    },
+    "cta": {
+      "title": "Your Health, Our Priority",
+      "subtitle": "Get in touch with Anagha Healthcare's reception desk at Maurya Hospital. Walk-in appointments or queries are answered 24/7.",
+      "btn_call": "Call Now: 0821-4534545",
+      "btn_directions": "Get Location & Directions"
+    }
+  },
+  "about": {
+    "welcome": "Welcome to Maurya Hospital",
+    "managed": "Managed by Anagha Healthcare",
+    "journey": "Our Healthcare Journey",
+    "welcome_text_p1": "Maurya Hospital, managed by Anagha Healthcare, is a premier multi-specialty medical facility in Mysuru, Karnataka. Since our inception, we have been committed to raising the standard of affordable, advanced healthcare. Our clinical framework brings together a panel of highly experienced medical specialists, dedicated nursing professionals, and modern diagnostic technologies.",
+    "welcome_text_p2": "We believe that quality medical care should be compassionate, transparent, and accessible to all sections of the community. From round-the-clock emergency responses and advanced ICU care to specialized surgical interventions (including Neuro, Spine, Orthopedics, and Plastic Surgery), we deliver seamless medical service when it matters most.",
+    "welcome_text_p3": "Our facility is equipped with state-of-the-art operating systems, a fully automated laboratory, and a 24/7 advanced CT imaging unit, ensuring accurate diagnostics and safe clinical outcomes for every patient.",
+    "vision_title": "Our Vision",
+    "vision_desc": "To emerge as the most trusted healthcare destination in the region, recognized for compassionate patient care, ethical clinical practices, and advanced medical infrastructure at affordable rates.",
+    "mission_title": "Our Mission",
+    "mission_desc": "To deliver high-quality, evidence-based medical treatment using modern technology, clinical expertise, and compassionate nursing care, while prioritizing patient safety and transparency.",
+    "values_title": "Our Core Values",
+    "values_desc": "Integrity, compassion, clinical excellence, patient-first care, and transparency in all healthcare practices and billing structures.",
+    "infra_title": "Modern Medical Infrastructure",
+    "infra_desc": "Explore our advanced medical setup designed for precision diagnosis and patient comfort.",
+    "infra_p1_title": "Modular Operation Theatres",
+    "infra_p1_desc": "Laminar flow air systems, anesthesia workstations, and high-definition endoscopic surgeries.",
+    "infra_p2_title": "Intensive Care Unit (ICU)",
+    "infra_p2_desc": "Continuous patient monitoring systems, isolation wards, and immediate emergency resuscitation.",
+    "infra_p3_title": "Diagnostic Services",
+    "infra_p3_desc": "Fully automated biochemistry and hematology analyzers for fast and accurate clinical reporting.",
+    "leadership": {
+      "eyebrow": "Clinical Leadership",
+      "title": "Management Information",
+      "p1": "Maurya Hospital is owned and managed by Anagha Healthcare, a committed healthcare organization based in Mysuru, Karnataka. Under the guidance of our leadership team, the hospital prioritizes absolute transparency in clinical outcomes, strict adherence to national health guidelines, and maintaining state-of-the-art support systems.",
+      "p2": "Our directors and senior administrators work in coordination with senior clinical consultants, ensuring that both diagnostic imaging and patient surgical care are delivered with optimal efficiency and care."
+    }
+  },
+  "ct_imaging": {
+    "title": "24/7 Advanced CT Imaging Services",
+    "subtitle": "Equipped with Siemens Somatom Scope CT scan systems, providing high-resolution diagnostic capabilities.",
+    "features_title": "CT Diagnostics Portfolio",
+    "f1_title": "3D Reconstruction Studies",
+    "f1_desc": "High-fidelity orthopedic and bone modeling for precise surgical planning and fracture evaluation.",
+    "f2_title": "CT Angiography",
+    "f2_desc": "Non-invasive vascular and cardiac studies visualizing arteries, circulation, and vascular blockages.",
+    "f3_title": "Dual / Triple Phase Imaging",
+    "f3_desc": "Specialized abdomen and organ contrast scans tracking contrast washouts over distinct timelines.",
+    "f4_title": "Head to Toe Trauma Scan",
+    "f4_desc": "Rapid whole-body scanning for multi-trauma assessments, vital in emergency and acute care.",
+    "f5_title": "Pediatric Low-Dose Scan",
+    "f5_desc": "Specialized protocols ensuring safe, high-resolution diagnostic imaging with minimal radiation.",
+    "f6_title": "Low-Dose Radiation Imaging",
+    "f6_desc": "Siemens software optimization providing maximum imaging detail at lowest feasible radiation exposure."
+  },
+  "facilities": {
+    "heading": "Critical Infrastructure",
+    "subheading": "Maurya Hospital utilizes advanced technologies and clean spaces to improve clinical outcomes.",
+    "default_facilities": {
+      "ultrasound": "ULTRASOUND SCAN",
+      "ultrasound_desc": "Advanced high-resolution ultrasound imaging for diagnostic precision in abdomen, obstetrics, and vascular studies.",
+      "xray": "Digital X-Ray",
+      "xray_desc": "High-frequency digital radiography generating clean skeletal, orthotic, and thoracic imagery with minimal exposure.",
+      "lab": "Laboratory Services",
+      "lab_desc": "Advanced pathology and biochemistry laboratory providing rapid diagnosis and fully automated testing services.",
+      "ot": "Modular Operation Theatre",
+      "ot_desc": "State-of-the-art laminar flow operating theatres equipped with modern anesthesia workstations and high-definition endoscopes.",
+      "icu": "ICU Facility",
+      "icu_desc": "High-dependency chambers with 24/7 cardiac monitoring, bedside ventilators, and highly specialized critical care nursing staff.",
+      "daycare": "Day Care Procedures",
+      "daycare_desc": "Efficient and convenient same-day diagnostic and therapeutic medical/surgical procedures without requiring overnight stay.",
+      "dialysis": "Dialysis",
+      "dialysis_desc": "Modern hemodialysis unit providing safe, comfortable, and sterile treatment for patients with chronic renal conditions.",
+      "ct_scan_room": "CT Scan Room",
+      "ct_scan_room_desc": "Fast high-resolution scanner providing 3D reconstructions, angiography, and prompt diagnostic imaging, available 24/7.",
+      "dr_plate": "Digital DR Plate Detector",
+      "dr_plate_desc": "High-sensitivity digital radiography plate detector for crystal-clear diagnostic X-Ray imaging.",
+      "autoclave": "Horizontal Autoclave Sterilizer",
+      "autoclave_desc": "Heavy-duty steam sterilizer chamber ensuring complete sterile processing of surgical instruments and supplies.",
+      "sensacore": "Sensa Core Electrolyte Analyzer",
+      "sensacore_desc": "Fully automated electrolyte analyzer providing rapid and precise blood analysis in our pathology lab.",
+      "bucky_stand": "Vertical X-Ray Bucky Stand",
+      "bucky_stand_desc": "Erect vertical chest stand designed for stable positioning during clinical chest radiography and standing examinations."
+    }
+  },
+  "gallery": {
+    "coming_soon": "Coming Soon",
+    "coming_soon_desc": "We are currently gathering media for this category. Check back soon for updates!",
+    "lightbox": {
+      "facility_type": "Facility Type",
+      "location": "Location",
+      "location_val": "Main Hospital Building",
+      "btn_close": "Close View"
+    }
+  },
+  "contact": {
+    "info_title": "Contact Details",
+    "info_desc": "Visit our hospital, drop an email, or call our emergency hotline directly.",
+    "phone": "Phone Numbers",
+    "email": "Email Addresses",
+    "location": "Hospital Location",
+    "form_title": "Send Us a Message",
+    "name": "Full Name",
+    "phone_label": "Phone Number",
+    "email_label": "Email Address",
+    "message": "Message / Enquiry Details",
+    "btn_submit": "Submit Enquiry",
+    "btn_submitting": "Submitting...",
+    "success": "Your enquiry has been successfully submitted! We will contact you shortly.",
+    "error_general": "Failed to submit enquiry. Please try again.",
+    "validation": {
+      "name_req": "Full name is required",
+      "phone_req": "Phone number is required",
+      "phone_invalid": "Please enter a valid 10-digit phone number",
+      "email_invalid": "Please enter a valid email address",
+      "message_req": "Message cannot be empty"
+    }
+  },
+  "not_found": {
+    "title": "Page Not Found",
+    "desc": "The page you are looking for does not exist or has been moved.",
+    "btn_home": "Back to Home"
+  },
+  "departments_data": {
+    "1": {
+      "name": "Emergency and Critical Care",
+      "desc": "24/7 rapid trauma response, emergency medicine, and critical care units staffed by expert physicians."
+    },
+    "2": {
+      "name": "Neuro and Spine Surgery",
+      "desc": "Advanced surgical treatments for brain and spine disorders, complex neuro-trauma, and nerve injuries."
+    },
+    "3": {
+      "name": "Orthopaedics",
+      "desc": "Comprehensive joint replacements, arthroscopic surgery, fracture treatment, and musculoskeletal care."
+    },
+    "4": {
+      "name": "Plastic and Reconstructive Surgery",
+      "desc": "Restorative, reconstructive, and aesthetic surgical procedures using advanced clinical techniques."
+    },
+    "5": {
+      "name": "General Medicine",
+      "desc": "Diagnosis, management, and prevention of complex adult medical conditions and metabolic disorders."
+    },
+    "6": {
+      "name": "General Surgery",
+      "desc": "Advanced open and laparoscopic surgical options for abdominal conditions, hernia repair, and trauma."
+    },
+    "7": {
+      "name": "Obstetrics and Gynaecology",
+      "desc": "Comprehensive women's healthcare, pre and post-natal care, normal and high-risk pregnancy deliveries."
+    },
+    "8": {
+      "name": "Paediatrics",
+      "desc": "Compassionate medical care for infants, children, and adolescents, including immunisations and developmental monitoring."
+    },
+    "9": {
+      "name": "ENT",
+      "desc": "Diagnosis and medical/surgical treatment of ear, nose, throat, head, and neck disorders."
+    },
+    "10": {
+      "name": "Pulmonology",
+      "desc": "Care for asthma, COPD, lung infections, sleep apnea, and other respiratory disorders."
+    },
+    "11": {
+      "name": "Cardiology",
+      "desc": "Expert cardiac care, diagnostics, hypertension management, and preventative heart wellness."
+    },
+    "12": {
+      "name": "Neurology",
+      "desc": "Medical management of stroke, epilepsy, migraines, neuropathies, and neurological health."
+    },
+    "13": {
+      "name": "Urology",
+      "desc": "Comprehensive treatments for kidney stones, urinary tract infections, prostate wellness, and other urological conditions."
+    },
+    "14": {
+      "name": "Oncology",
+      "desc": "Early cancer detection, screening, tumor diagnostics, and holistic support services."
+    },
+    "15": {
+      "name": "Dermatology",
+      "desc": "Comprehensive diagnosis and treatment for skin, hair, nail disorders, and cosmetic concerns."
+    }
+  },
+  "doctors_data": {
+    "1": {
+      "name": "DR. BHAVANA BHAGVATH.K",
+      "qualification": "MBBS, MD (Internal Medicine) DNB (Internal Medicine)",
+      "specialization": "Consultant General Physician",
+      "experience": "12 Years",
+      "desc": "Dr. Bhavana Bhagvath K is a highly experienced Consultant General Physician dedicated to comprehensive adult patient care. Her clinical expertise covers advanced internal medicine, chronic disease management (diabetes, hypertension), lifestyle disorder diagnostics, and preventative care counsel. She prioritizes evidence-based diagnostic protocols and personalized patient wellness."
+    },
+    "3": {
+      "name": "DR. Anudeep Talagavadi Channaiah",
+      "qualification": "MBBS, MS (GENERAL SURGERY), MCH. DRNB (PLASTIC AND RECONSTRUCTIVE SURGERY)",
+      "specialization": "Plastic Reconstructive and Cosmetic Surgery",
+      "experience": "10 Years",
+      "desc": "Dr. Anudeep Talagavadi Channaiah is a distinguished Plastic & Reconstructive Surgeon specialized in cosmetic procedures, microsurgery, hand reconstructive procedures, burn surgeries, and cosmetic enhancements. With comprehensive clinical training in both General Surgery and Plastic Surgery, he is committed to delivering state-of-the-art surgical care with absolute precision."
+    }
+  },
+  "facilities_data": {
+    "1": {
+      "name": "Modular Operation Theatre",
+      "desc": "State-of-the-art laminar flow operating theatres equipped with modern anesthesia workstations and high-definition endoscopes."
+    },
+    "2": {
+      "name": "ICU Facility",
+      "desc": "High-dependency chambers with 24/7 cardiac monitoring, bedside ventilators, and highly specialized critical care nursing staff."
+    },
+    "3": {
+      "name": "Laboratory Services",
+      "desc": "Advanced pathology and biochemistry laboratory providing rapid diagnosis and fully automated testing services."
+    },
+    "4": {
+      "name": "ULTRASOUND SCAN",
+      "desc": "Advanced high-resolution ultrasound imaging for diagnostic precision in abdomen, obstetrics, and vascular studies."
+    },
+    "5": {
+      "name": "Digital X-Ray",
+      "desc": "High-frequency digital radiography generating clean skeletal, orthotic, and thoracic imagery with minimal exposure."
+    },
+    "6": {
+      "name": "Day Care Procedures",
+      "desc": "Efficient and convenient same-day diagnostic and therapeutic medical/surgical procedures without requiring overnight stay."
+    },
+    "7": {
+      "name": "Dialysis",
+      "desc": "Modern hemodialysis unit providing safe, comfortable, and sterile treatment for patients with chronic renal conditions."
+    },
+    "8": {
+      "name": "CT Scan Room",
+      "desc": "Fast high-resolution scanner providing 3D reconstructions, angiography, and prompt diagnostic imaging, available 24/7."
+    },
+    "9": {
+      "name": "Digital DR Plate Detector",
+      "desc": "High-sensitivity digital radiography plate detector for crystal-clear diagnostic X-Ray imaging."
+    },
+    "10": {
+      "name": "Horizontal Autoclave Sterilizer",
+      "desc": "Heavy-duty steam sterilizer chamber ensuring complete sterile processing of surgical instruments and supplies."
+    },
+    "11": {
+      "name": "Sensa Core Electrolyte Analyzer",
+      "desc": "Fully automated electrolyte analyzer providing rapid and precise blood analysis in our pathology lab."
+    },
+    "12": {
+      "name": "Vertical X-Ray Bucky Stand",
+      "desc": "Erect vertical chest stand designed for stable positioning during clinical chest radiography and standing examinations."
+    }
+  },
+  "gallery_data": {
+    "2": {
+      "title": "CT Siemens Somatom Scope Scanner",
+      "category": "CT Scan"
+    },
+    "3": {
+      "title": "Advanced C-Arm Operating Theatre",
+      "category": "Infrastructure"
+    },
+    "4": {
+      "title": "GE Anesthesia Workstation",
+      "category": "Infrastructure"
+    },
+    "5": {
+      "title": "CT Control Room Console",
+      "category": "CT Scan"
+    },
+    "6": {
+      "title": "Sysmex XN-330 Hematology Analyzer",
+      "category": "Infrastructure"
+    },
+    "7": {
+      "title": "GEM Premier 3500 Blood Gas Analyzer",
+      "category": "Infrastructure"
+    },
+    "8": {
+      "title": "Sensa Core ST-200 Electrolyte Analyzer",
+      "category": "Infrastructure"
+    },
+    "9": {
+      "title": "Surgical Supply Unit",
+      "category": "Infrastructure"
+    },
+    "10": {
+      "title": "Emergency 24x7 Entrance",
+      "category": "Hospital"
+    },
+    "11": {
+      "title": "Nursing Station",
+      "category": "Hospital"
+    },
+    "12": {
+      "title": "Maurya Pharma Pharmacy Counter",
+      "category": "Hospital"
+    },
+    "13": {
+      "title": "Outpatient Corridor & Waiting Area",
+      "category": "Hospital"
+    },
+    "14": {
+      "title": "Intensive Care Unit (ICU) Ward",
+      "category": "Infrastructure"
+    },
+    "15": {
+      "title": "Mobile X-Ray Unit",
+      "category": "Infrastructure"
+    },
+    "16": {
+      "title": "Digital DR Plate Detector",
+      "category": "Infrastructure"
+    },
+    "17": {
+      "title": "Horizontal Autoclave Sterilizer",
+      "category": "Infrastructure"
+    },
+    "18": {
+      "title": "Laminar Flow Operation Theatre",
+      "category": "Infrastructure"
+    },
+    "20": {
+      "title": "Vertical X-Ray Bucky Stand",
+      "category": "Infrastructure"
+    },
+    "21": {
+      "title": "Maurya Hospital Outside Building & Parking",
+      "category": "Hospital"
+    },
+    "23": {
+      "title": "Maurya Hospital Front Entrance View",
+      "category": "Hospital"
+    },
+    "24": {
+      "title": "Multi Slice Advanced CT Imaging",
+      "category": "CT Scan"
+    }
+  },
+  "doctor_names": {
+    "Dr. S. K. Gupta": "Dr. S. K. Gupta",
+    "Dr. Neha Sharma": "Dr. Neha Sharma",
+    "Dr. Ramesh Kumar": "Dr. Ramesh Kumar",
+    "Dr. Anita Desai": "Dr. Anita Desai",
+    "Dr. Vikram Sharma": "Dr. Vikram Sharma",
+    "Dr. Priya Menon": "Dr. Priya Menon",
+    "Dr. Sunil Patil": "Dr. Sunil Patil",
+    "Dr. Arjun Reddy": "Dr. Arjun Reddy",
+    "Dr. Vikram Dev": "Dr. Vikram Dev",
+    "Dr. Sunitha Rao": "Dr. Sunitha Rao",
+    "Dr. Lakshmi Devi": "Dr. Lakshmi Devi",
+    "Dr. Meera Nair": "Dr. Meera Nair",
+    "Dr. Ashok Kumar": "Dr. Ashok Kumar",
+    "Dr. Rajesh Gowda": "Dr. Rajesh Gowda",
+    "Dr. Sunita Patil": "Dr. Sunita Patil"
+  },
+  "doctor_roles": {
+    "Senior Consultant Physician": "Senior Consultant Physician",
+    "Internal Medicine Specialist": "Internal Medicine Specialist",
+    "Head of Emergency Medicine": "Head of Emergency Medicine",
+    "Critical Care Specialist": "Critical Care Specialist",
+    "Senior Neurosurgeon": "Senior Neurosurgeon",
+    "Spine Surgery Specialist": "Spine Surgery Specialist",
+    "Joint Replacement Surgeon": "Joint Replacement Surgeon",
+    "Sports Medicine Specialist": "Sports Medicine Specialist",
+    "Senior Plastic Surgeon": "Senior Plastic Surgeon",
+    "Consultant Obstetrician & Gynaecologist": "Consultant Obstetrician & Gynaecologist",
+    "Senior Gynaecologist": "Senior Gynaecologist",
+    "Senior Paediatrician": "Senior Paediatrician",
+    "Child Development Specialist": "Child Development Specialist",
+    "ENT Specialist": "ENT Specialist",
+    "Consultant ENT Surgeon": "Consultant ENT Surgeon",
+    "Consultant Pulmonologist": "Consultant Pulmonologist",
+    "Chief Cardiologist": "Chief Cardiologist",
+    "Consultant Neurologist": "Consultant Neurologist",
+    "Consultant Urologist": "Consultant Urologist",
+    "Consultant Oncologist": "Consultant Oncologist",
+    "Consultant Dermatologist": "Consultant Dermatologist",
+    "Senior General Surgeon": "Senior General Surgeon"
+  },
+  "not_found": {
+    "title": "Page Not Found",
+    "desc": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+  }
+}

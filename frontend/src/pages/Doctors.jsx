@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import useFetch from '../hooks/useFetch';
+import { useTranslation } from 'react-i18next';
 
 const fallbackDoctors = [
   {
@@ -55,22 +56,23 @@ const fallbackDoctors = [
 ];
 
 const Doctors = () => {
+  const { t, i18n } = useTranslation();
   const { data: doctors, loading } = useFetch('/doctors');
 
   const displayedDoctors = doctors && doctors.length > 0 ? doctors : fallbackDoctors;
 
   return (
-    <div className="doctors-page fade-in">
+    <div className="doctors-page fade-in lang-fade-transition" key={i18n.language}>
 
       {/* Premium Banner */}
       <PageBanner
-        eyebrow="Expert Medical Team · Mysuru"
-        title={<>Our Medical <span style={{ color: '#f0a070' }}>Specialists</span></>}
-        subtitle="Meet our distinguished panel of clinical leaders, surgeons, and healthcare consultants."
+        eyebrow={t('banner.doctors.eyebrow')}
+        title={<>{t('banner.doctors.title')} <span style={{ color: '#f0a070' }}>Us</span></>}
+        subtitle={t('banner.doctors.subtitle')}
         stats={[
-          { value: '15+', label: 'Consultants' },
-          { value: '200+', label: 'Years Combined Exp.' },
-          { value: '24/7', label: 'On-Call Support' },
+          { value: '15+', label: t('banner.departments.stat_consultants') },
+          { value: '200+', label: i18n.language.startsWith('kn') ? 'ಒಟ್ಟು ಅನುಭವ' : 'Combined Exp.' },
+          { value: '24/7', label: t('banner.doctors.stat_avail') },
         ]}
       />
 
@@ -78,8 +80,8 @@ const Doctors = () => {
       <section className="section-padding">
         <div className="container">
           <div className="section-header">
-            <h2>Expert Clinical Team</h2>
-            <p>Our consultants deliver clinical care under specialized surgical protocols.</p>
+            <h2>{t('banner.doctors.title')}</h2>
+            <p>{t('banner.doctors.subtitle')}</p>
           </div>
 
           {loading && (
@@ -103,11 +105,13 @@ const Doctors = () => {
                     style={{ textDecoration: 'none', cursor: 'pointer', display: 'block' }}
                   >
                     <div style={{ padding: '30px 20px 20px' }}>
-                      <img src={imgSource} alt={doc.Name} className="doctor-img" />
-                      <h3>{doc.Name}</h3>
-                      <div className="doctor-specialty">{doc.Specialization}</div>
-                      <div className="doctor-qual">{doc.Qualification}</div>
-                      <span className="doctor-exp">{doc.Experience} Experience</span>
+                      <img src={imgSource} alt={t(`doctors_data.${doc.DoctorId}.name`, { defaultValue: doc.Name })} className="doctor-img" />
+                      <h3>{t(`doctors_data.${doc.DoctorId}.name`, { defaultValue: doc.Name })}</h3>
+                      <div className="doctor-specialty">{t(`doctors_data.${doc.DoctorId}.specialization`, { defaultValue: doc.Specialization })}</div>
+                      <div className="doctor-qual">{t(`doctors_data.${doc.DoctorId}.qualification`, { defaultValue: doc.Qualification })}</div>
+                      <span className="doctor-exp">
+                        {t(`doctors_data.${doc.DoctorId}.experience`, { defaultValue: doc.Experience })} {i18n.language.startsWith('kn') ? 'ಅನುಭವ' : 'Experience'}
+                      </span>
                     </div>
                   </Link>
                 );

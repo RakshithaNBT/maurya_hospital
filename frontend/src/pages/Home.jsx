@@ -3,11 +3,13 @@ import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import { FaUserMd, FaClinicMedical, FaClock, FaHeartbeat, FaCheckCircle, FaStar, FaShieldAlt } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import hospitalBackside from '../assets/hospital_backside.png';
 import heroBanner from '../assets/hero.png';
 
 
 const Home = () => {
+  const { t, i18n } = useTranslation();
   const { data: content } = useFetch('/content');
 
   const wcuRef = React.useRef(null);
@@ -70,71 +72,71 @@ const Home = () => {
 
   const serviceDetails = [
     {
-      title: '24/7 Emergency Care',
-      tagline: 'Immediate life-saving response, every hour of every day.',
+      title: t('home.service_details.emergency.title'),
+      tagline: t('home.service_details.emergency.tagline'),
       points: [
-        'Round-the-clock emergency department staffed by qualified physicians and trained nursing teams.',
-        'Rapid trauma assessment, stabilisation, and transfer protocols in place.',
-        'Dedicated ambulance coordination and pre-hospital communication.',
-        'Advanced resuscitation equipment and defibrillators on standby.',
-        'Direct fast-track access to ICU, OT, and radiology in emergencies.',
+        t('home.service_details.emergency.p1'),
+        t('home.service_details.emergency.p2'),
+        t('home.service_details.emergency.p3'),
+        t('home.service_details.emergency.p4'),
+        t('home.service_details.emergency.p5')
       ],
     },
     {
-      title: 'Advanced CT Imaging',
-      tagline: 'Precision diagnostics powered by state-of-the-art technology.',
+      title: t('home.service_details.ct.title'),
+      tagline: t('home.service_details.ct.tagline'),
       points: [
-        'Multi-slice CT scanner providing high-resolution cross-sectional images.',
-        'CT Angiography for cardiac, neuro, and vascular studies.',
-        '3D reconstruction capability for orthopaedic and surgical planning.',
-        'Available round-the-clock including emergency and acute-care scans.',
-        'Expert radiologist interpretation with rapid report turnaround.',
+        t('home.service_details.ct.p1'),
+        t('home.service_details.ct.p2'),
+        t('home.service_details.ct.p3'),
+        t('home.service_details.ct.p4'),
+        t('home.service_details.ct.p5')
       ],
     },
     {
-      title: 'Expert Clinical Panel',
-      tagline: 'Highly qualified specialists across multiple disciplines.',
+      title: t('home.service_details.doctors.title'),
+      tagline: t('home.service_details.doctors.tagline'),
       points: [
-        'Resident and visiting consultants in Orthopaedics, Neurosurgery, and Plastic Surgery.',
-        'Dedicated Oncology, Gynaecology, and General Surgery specialists.',
-        'Multi-disciplinary team (MDT) case reviews for complex conditions.',
-        'Outpatient consultation hours 6 days a week with flexible slots.',
-        'In-house and tele-consultation available for follow-up care.',
+        t('home.service_details.doctors.p1'),
+        t('home.service_details.doctors.p2'),
+        t('home.service_details.doctors.p3'),
+        t('home.service_details.doctors.p4'),
+        t('home.service_details.doctors.p5')
       ],
     },
     {
-      title: 'Intensive Care Unit',
-      tagline: 'Critical care with continuous monitoring and expert intervention.',
+      title: t('home.service_details.icu.title'),
+      tagline: t('home.service_details.icu.tagline'),
       points: [
-        'Fully equipped ICU with bedside cardiac monitoring, pulse oximetry, and ventilators.',
-        'Dedicated intensivist coverage and 1:2 nurse-to-patient ratio.',
-        'Isolation bays available for infection control and post-operative recovery.',
-        'Integrated with emergency and surgical departments for seamless transfers.',
-        'Family communication protocols and regular clinical briefings.',
+        t('home.service_details.icu.p1'),
+        t('home.service_details.icu.p2'),
+        t('home.service_details.icu.p3'),
+        t('home.service_details.icu.p4'),
+        t('home.service_details.icu.p5')
       ],
     },
     {
-      title: 'Insurance Accepted',
-      tagline: 'Hassle-free cashless treatment across all major schemes.',
+      title: t('home.service_details.insurance.title'),
+      tagline: t('home.service_details.insurance.tagline'),
       points: [
-        'Empanelled with all major TPA (Third-Party Administrator) networks.',
-        'Government health schemes including Ayushman Bharat / PM-JAY accepted.',
-        'Karnataka state government and ESIC beneficiaries covered.',
-        'Dedicated insurance desk for pre-authorisation and claim assistance.',
-        'Transparent billing with detailed cost estimates provided upfront.',
+        t('home.service_details.insurance.p1'),
+        t('home.service_details.insurance.p2'),
+        t('home.service_details.insurance.p3'),
+        t('home.service_details.insurance.p4'),
+        t('home.service_details.insurance.p5')
       ],
     },
   ];
 
 
-  const welcomeTitle = content?.welcome_title || 'Welcome to Maurya Hospital';
-  const welcomeText = content?.welcome_text || 'Maurya Hospital, managed by Anagha Healthcare, is a premier multi-specialty healthcare institution in Mysuru, Karnataka. We are dedicated to providing compassionate, state-of-the-art medical services at affordable rates. Our highly experienced clinical team, modern diagnostic facilities (including round-the-clock CT imaging), and advanced operating systems ensure you receive the finest treatment possible.';
+  const welcomeTitle = content?.welcome_title ? (i18n.language.startsWith('kn') ? t('home.welcome_title') : content.welcome_title) : t('home.welcome_title');
+  const welcomeText = content?.welcome_text ? (i18n.language.startsWith('kn') ? t('home.welcome_text') : content.welcome_text) : t('home.welcome_text');
 
   const stats = {
-    beds: content?.stats_beds || '100+',
-    doctors: content?.stats_doctors || '25+',
-    staff: content?.stats_staff || '150+',
-    served: content?.stats_patients_served || '50,000+',
+    beds: content?.stats_beds || t('home.stats.beds'),
+    doctors: content?.stats_doctors || t('home.stats.doctors'),
+    staff: content?.stats_staff || t('home.stats.staff'),
+    served: content?.stats_patients_served || t('home.stats.served'),
   };
 
   // 3D tilt helpers
@@ -167,7 +169,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home-page fade-in">
+    <div className="home-page fade-in lang-fade-transition" key={i18n.language}>
       {/* 1. Hero Banner */}
       <section className="hero-banner-section" style={{ marginBottom: '60px' }}>
         <img src={heroBanner} alt="Maurya Hospital - Managed by Anagha Healthcare" className="hero-banner-image" />
@@ -183,12 +185,12 @@ const Home = () => {
               <img src={hospitalBackside} alt="Maurya Hospital Storefront" />
             </div>
             <div>
-              <span className="hero-subtitle" style={{ color: 'var(--primary-color)' }}>About Maurya Hospital</span>
+              <span className="hero-subtitle" style={{ color: 'var(--primary-color)' }}>{t('about.managed')}</span>
               <h2 style={{ fontSize: '2rem', margin: '10px 0 20px', color: 'var(--secondary-color)' }}>{welcomeTitle}</h2>
               <p style={{ color: 'var(--text-muted)', marginBottom: '20px', fontSize: '1.05rem', lineHeight: '1.7' }}>
                 {welcomeText}
               </p>
-              <Link to="/about" className="btn btn-primary">Read More About Us</Link>
+              <Link to="/about" className="btn btn-primary">{t('home.read_more')}</Link>
             </div>
           </div>
         </div>
@@ -207,17 +209,17 @@ const Home = () => {
         >
           <div className="qs-marquee-content">
             {[
-              { icon: <FaClock />, title: '24/7 Emergency Care', desc: 'Critical care and rapid trauma response operating round-the-clock with expert physicians.' },
-              { icon: <FaClinicMedical />, title: 'Advanced CT Imaging', desc: 'Modern diagnostic imaging, CT Angiography, and 3D reconstructions, available 24/7.' },
-              { icon: <FaUserMd />, title: 'Expert Clinical Panel', desc: 'Specialists in Orthopedics, Neurosurgery, Plastic Surgery, Oncology, and Gynecology.' },
-              { icon: <FaHeartbeat />, title: 'Intensive Care Unit', desc: 'Fully-monitored high-dependency ICU chambers with life support systems and ventilators.' },
-              { icon: <FaShieldAlt />, title: 'Insurance Accepted', desc: 'All major insurance, TPA, and Government schemes are accepted here.' }
+              { icon: <FaClock />, titleKey: 'emergency_title', descKey: 'emergency_desc' },
+              { icon: <FaClinicMedical />, titleKey: 'ct_title', descKey: 'ct_desc' },
+              { icon: <FaUserMd />, titleKey: 'doctors_title', descKey: 'doctors_desc' },
+              { icon: <FaHeartbeat />, titleKey: 'icu_title', descKey: 'icu_desc' },
+              { icon: <FaShieldAlt />, titleKey: 'insurance_title', descKey: 'insurance_desc' }
             ].concat([
-              { icon: <FaClock />, title: '24/7 Emergency Care', desc: 'Critical care and rapid trauma response operating round-the-clock with expert physicians.' },
-              { icon: <FaClinicMedical />, title: 'Advanced CT Imaging', desc: 'Modern diagnostic imaging, CT Angiography, and 3D reconstructions, available 24/7.' },
-              { icon: <FaUserMd />, title: 'Expert Clinical Panel', desc: 'Specialists in Orthopedics, Neurosurgery, Plastic Surgery, Oncology, and Gynecology.' },
-              { icon: <FaHeartbeat />, title: 'Intensive Care Unit', desc: 'Fully-monitored high-dependency ICU chambers with life support systems and ventilators.' },
-              { icon: <FaShieldAlt />, title: 'Insurance Accepted', desc: 'All major insurance, TPA, and Government schemes are accepted here.' }
+              { icon: <FaClock />, titleKey: 'emergency_title', descKey: 'emergency_desc' },
+              { icon: <FaClinicMedical />, titleKey: 'ct_title', descKey: 'ct_desc' },
+              { icon: <FaUserMd />, titleKey: 'doctors_title', descKey: 'doctors_desc' },
+              { icon: <FaHeartbeat />, titleKey: 'icu_title', descKey: 'icu_desc' },
+              { icon: <FaShieldAlt />, titleKey: 'insurance_title', descKey: 'insurance_desc' }
             ]).map((service, idx) => {
               const isSpotlightActive = activeSpotlight === (idx % 5);
               return (
@@ -233,8 +235,8 @@ const Home = () => {
                   <div className="qs-glare" />
                   <div className="service-card-inner">
                     <div className="service-icon">{service.icon}</div>
-                    <h3>{service.title}</h3>
-                    <p>{service.desc}</p>
+                    <h3>{t(`home.services.${service.titleKey}`)}</h3>
+                    <p>{t(`home.services.${service.descKey}`)}</p>
                   </div>
                 </div>
               );
@@ -260,7 +262,7 @@ const Home = () => {
                   </li>
                 ))}
               </ul>
-              <a href="/contact" className="btn btn-primary" style={{ marginTop: '28px', display: 'inline-block' }}>Book an Appointment</a>
+              <a href="/contact" className="btn btn-primary" style={{ marginTop: '28px', display: 'inline-block' }}>{t('home.service_details.btn_book')}</a>
             </div>
           </div>,
           document.body
@@ -274,32 +276,32 @@ const Home = () => {
 
             {/* Left Column: Heading, Subtitle & Feature Cards */}
             <div className="wcu-left-content">
-              <h2 className="wcu-main-heading">Why Choose Maurya Hospital?</h2>
+              <h2 className="wcu-main-heading">{t('home.why_choose_us.title')}</h2>
               <p className="wcu-main-subtitle">
-                Trusted healthcare with experienced specialists, advanced technology and compassionate care.
+                {t('home.why_choose_us.subtitle')}
               </p>
 
               <div className="wcu-cards-stack">
                 {[
                   {
-                    title: 'Experienced Doctors',
-                    desc: 'Highly skilled clinical team and consulting specialists with years of proven medical practice.'
+                    titleKey: 'docs_title',
+                    descKey: 'docs_desc'
                   },
                   {
-                    title: 'Advanced Medical Equipment',
-                    desc: 'Equipped with modern diagnostic systems and advanced operating theatres.'
+                    titleKey: 'equip_title',
+                    descKey: 'equip_desc'
                   },
                   {
-                    title: 'Affordable Treatment',
-                    desc: 'Transparent, ethical and cost-effective healthcare.'
+                    titleKey: 'afford_title',
+                    descKey: 'afford_desc'
                   },
                   {
-                    title: 'Patient-Centered Care',
-                    desc: 'Personalized treatment plans with compassionate nursing support.'
+                    titleKey: 'patient_title',
+                    descKey: 'patient_desc'
                   },
                   {
-                    title: '24/7 Emergency Support',
-                    desc: 'Round-the-clock emergency services and critical care.'
+                    titleKey: 'emergency_title',
+                    descKey: 'emergency_desc'
                   }
                 ].map((feature, idx) => {
                   const isActive = activeWcu === idx;
@@ -318,9 +320,9 @@ const Home = () => {
                         </div>
                       </div>
                       <div className="wcu-text-col">
-                        <h4 className="wcu-card-title">{feature.title}</h4>
+                        <h4 className="wcu-card-title">{t(`home.why_choose_us.features.${feature.titleKey}`)}</h4>
                         <div className="wcu-desc-wrapper">
-                          <p className="wcu-card-desc">{feature.desc}</p>
+                          <p className="wcu-card-desc">{t(`home.why_choose_us.features.${feature.descKey}`)}</p>
                         </div>
                       </div>
                     </div>
@@ -917,31 +919,29 @@ const Home = () => {
         <div className="container stats-grid">
           <div className="stat-item">
             <h3>{stats.beds}</h3>
-            <p>Hospital Beds</p>
+            <p>{t('home.stats.beds_label')}</p>
           </div>
           <div className="stat-item">
             <h3>{stats.doctors}</h3>
-            <p>Specialist Doctors</p>
+            <p>{t('home.stats.doctors_label')}</p>
           </div>
           <div className="stat-item">
             <h3>{stats.staff}</h3>
-            <p>Clinical Staff</p>
+            <p>{t('home.stats.staff_label')}</p>
           </div>
           <div className="stat-item">
             <h3>{stats.served}</h3>
-            <p>Patients Cured</p>
+            <p>{t('home.stats.served_label')}</p>
           </div>
         </div>
       </section>
-
-
 
       {/* 9. Testimonials */}
       <section className="testimonials section-padding">
         <div className="container">
           <div className="section-header">
-            <h2>What Our Patients Say</h2>
-            <p>Read about patient healing journeys and recovery reviews at Maurya Hospital.</p>
+            <h2>{t('home.testimonials.title')}</h2>
+            <p>{t('home.testimonials.subtitle')}</p>
           </div>
 
           <div className="testimonials-slider">
@@ -951,12 +951,12 @@ const Home = () => {
                 <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
               </div>
               <p>
-                My father was admitted for emergency ortho surgery. The care given by the surgeon and ICU staff was highly supportive. Grateful to Maurya Hospital and Anagha Healthcare.
+                {t('home.testimonials.t1.text')}
               </p>
               <div className="testimonial-author">
                 <div className="author-info">
-                  <h4>Suresh Kumar</h4>
-                  <span>Mysuru Resident</span>
+                  <h4>{t('home.testimonials.t1.author')}</h4>
+                  <span>{t('home.testimonials.t1.role')}</span>
                 </div>
               </div>
             </div>
@@ -966,12 +966,12 @@ const Home = () => {
                 <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
               </div>
               <p>
-                The CT imaging department is exceptional. I had to get a dual-phase scan at 2 AM. The technician was extremely professional and we got the reports within hours.
+                {t('home.testimonials.t2.text')}
               </p>
               <div className="testimonial-author">
                 <div className="author-info">
-                  <h4>Ananya Hegde</h4>
-                  <span>Patient</span>
+                  <h4>{t('home.testimonials.t2.author')}</h4>
+                  <span>{t('home.testimonials.t2.role')}</span>
                 </div>
               </div>
             </div>
@@ -981,12 +981,12 @@ const Home = () => {
                 <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
               </div>
               <p>
-                Hygienic wards, friendly nurses, and prompt doctors. They explained the treatment protocol clearly. Highly recommend this hospital for quality, affordable care.
+                {t('home.testimonials.t3.text')}
               </p>
               <div className="testimonial-author">
                 <div className="author-info">
-                  <h4>Mohammad R.</h4>
-                  <span>Retired Officer</span>
+                  <h4>{t('home.testimonials.t3.author')}</h4>
+                  <span>{t('home.testimonials.t3.role')}</span>
                 </div>
               </div>
             </div>
@@ -997,13 +997,13 @@ const Home = () => {
       {/* 10. Contact Section banner */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-light)', borderTop: '1px solid var(--border-color)' }}>
         <div className="container" style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.2rem', color: 'var(--secondary-color)', marginBottom: '15px' }}>Your Health, Our Priority</h2>
+          <h2 style={{ fontSize: '2.2rem', color: 'var(--secondary-color)', marginBottom: '15px' }}>{t('home.cta.title')}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 30px' }}>
-            Get in touch with Anagha Healthcare's reception desk at Maurya Hospital. Walk-in appointments or queries are answered 24/7.
+            {t('home.cta.subtitle')}
           </p>
           <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="tel:08214534545" className="btn btn-primary">Call Now: 0821-4534545</a>
-            <Link to="/contact" className="btn btn-secondary">Get Location & Directions</Link>
+            <a href="tel:08214534545" className="btn btn-primary">{t('home.cta.btn_call')}</a>
+            <Link to="/contact" className="btn btn-secondary">{t('home.cta.btn_directions')}</Link>
           </div>
         </div>
       </section>

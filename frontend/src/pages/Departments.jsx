@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import useFetch from '../hooks/useFetch';
 import { departmentsData } from '../data/departmentsData';
+import { useTranslation } from 'react-i18next';
 
 const Departments = () => {
+  const { t, i18n } = useTranslation();
   const { data: departments, loading } = useFetch('/departments');
 
   // Use local structured data with slug support for linking
@@ -39,16 +41,16 @@ const Departments = () => {
   };
 
   return (
-    <div className="departments-page fade-in">
+    <div className="departments-page fade-in lang-fade-transition" key={i18n.language}>
       {/* Premium Banner */}
       <PageBanner
-        eyebrow="Maurya Hospital · Multi-Speciality"
-        title={<>Clinical <span style={{ color: '#f0a070' }}>Departments</span></>}
-        subtitle="We provide a comprehensive range of clinical specialties staffed by highly experienced medical consultants."
+        eyebrow={t('banner.departments.eyebrow')}
+        title={<>{t('banner.departments.title')} <span style={{ color: '#f0a070' }}>Us</span></>}
+        subtitle={t('banner.departments.subtitle')}
         stats={[
-          { value: '10+', label: 'Specialities' },
-          { value: '24/7', label: 'Expert Care' },
-          { value: '100%', label: 'Patient Focus' },
+          { value: '10+', label: t('banner.departments.stat_dept') },
+          { value: '24/7', label: t('banner.departments.stat_care') },
+          { value: '100%', label: i18n.language.startsWith('kn') ? "ರೋಗಿ ಕೇಂದ್ರಿತ" : "Patient Focus" },
         ]}
       />
 
@@ -56,8 +58,8 @@ const Departments = () => {
       <section className="section-padding">
         <div className="container">
           <div className="section-header">
-            <h2>Our Specialties</h2>
-            <p>Maurya Hospital provides specialized treatment options matching state-of-the-art standards.</p>
+            <h2>{t('footer.specialties')}</h2>
+            <p>{t('banner.departments.subtitle')}</p>
           </div>
 
           {loading && (
@@ -164,10 +166,10 @@ const Departments = () => {
                       <img src={imgSource} alt={dept.DepartmentName} />
                     </div>
                     <div className="dept-content">
-                      <h3>{dept.DepartmentName}</h3>
-                      <p>{dept.Description}</p>
+                      <h3>{t(`departments_data.${dept.DepartmentId}.name`, { defaultValue: dept.DepartmentName })}</h3>
+                      <p>{t(`departments_data.${dept.DepartmentId}.desc`, { defaultValue: dept.Description })}</p>
                       <div className="dept-learn-more">
-                        Learn More <span>→</span>
+                        {i18n.language.startsWith('kn') ? "ಹೆಚ್ಚಿನ ಮಾಹಿತಿ" : "Learn More"} <span>→</span>
                       </div>
                     </div>
                   </Link>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import PageBanner from '../components/PageBanner';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaExclamationTriangle, FaDirections } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import API from '../services/api';
 
 const Contact = () => {
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -24,7 +26,12 @@ const Contact = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.phone || !formData.message) {
-      setStatus({ type: 'error', message: 'Please fill in all required fields (Name, Phone, Message).' });
+      setStatus({ 
+        type: 'error', 
+        message: i18n.language.startsWith('kn') 
+          ? 'ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಅಗತ್ಯ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ (ಹೆಸರು, ಫೋನ್, ಸಂದೇಶ).' 
+          : 'Please fill in all required fields (Name, Phone, Message).' 
+      });
       return;
     }
 
@@ -41,7 +48,9 @@ const Contact = () => {
 
       setStatus({
         type: 'success',
-        message: 'Redirecting to WhatsApp to send your enquiry!'
+        message: i18n.language.startsWith('kn')
+          ? 'ನಿಮ್ಮ ವಿಚಾರಣೆಯನ್ನು ಕಳುಹಿಸಲು ವಾಟ್ಸಾಪ್‌ಗೆ ಮರುನಿರ್ದೇಶಿಸಲಾಗುತ್ತಿದೆ!'
+          : 'Redirecting to WhatsApp to send your enquiry!'
       });
       
       // Clear form after slight delay so user sees success message before tab switch
@@ -54,7 +63,9 @@ const Contact = () => {
       console.error('WhatsApp redirect error:', error);
       setStatus({
         type: 'error',
-        message: 'Failed to redirect to WhatsApp. Please try again later.'
+        message: i18n.language.startsWith('kn')
+          ? 'ವಾಟ್ಸಾಪ್‌ಗೆ ಮರುನಿರ್ದೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ನಂತರ ಪ್ರಯತ್ನಿಸಿ.'
+          : 'Failed to redirect to WhatsApp. Please try again later.'
       });
     } finally {
       setLoading(false);
@@ -62,16 +73,16 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-page fade-in">
+    <div className="contact-page fade-in lang-fade-transition" key={i18n.language}>
       {/* Premium Banner */}
       <PageBanner
-        eyebrow="We're Here to Help · 24/7"
-        title={<>Contact <span style={{ color: '#f0a070' }}>Us</span></>}
-        subtitle="Reach out to our reception, administration, or medical team. We are available 24/7."
+        eyebrow={i18n.language.startsWith('kn') ? 'ನಾವು ಸಹಾಯ ಮಾಡಲು ಇಲ್ಲಿದ್ದೇವೆ · 24/7' : "We're Here to Help · 24/7"}
+        title={<>{t('nav.contact')}</>}
+        subtitle={i18n.language.startsWith('kn') ? 'ನಮ್ಮ ಸಹಾಯವಾಣಿ, ಆಡಳಿತ ಅಥವಾ ವೈದ್ಯಕೀಯ ತಂಡವನ್ನು ಸಂಪರ್ಕಿಸಿ. ನಾವು ದಿನದ 24 ಗಂಟೆಯೂ ಲಭ್ಯವಿದ್ದೇವೆ.' : 'Reach out to our reception, administration, or medical team. We are available 24/7.'}
         stats={[
-          { value: '24/7', label: 'Emergency Line' },
-          { value: '2 min', label: 'Response Time' },
-          { value: '100%', label: 'Patient Focused' },
+          { value: '24/7', label: i18n.language.startsWith('kn') ? 'ತುರ್ತು ಸಹಾಯವಾಣಿ' : 'Emergency Line' },
+          { value: '2 min', label: i18n.language.startsWith('kn') ? 'ಪ್ರತಿಕ್ರಿಯೆ ಸಮಯ' : 'Response Time' },
+          { value: '100%', label: i18n.language.startsWith('kn') ? 'ರೋಗಿ ಕೇಂದ್ರಿತ' : 'Patient Focused' },
         ]}
       />
 
@@ -83,18 +94,28 @@ const Contact = () => {
             {/* Info Panel */}
             <div className="contact-info-panel">
               <div>
-                <h3>Maurya Hospital</h3>
-                <p>Managed by Anagha Healthcare</p>
+                <h3>{i18n.language.startsWith('kn') ? 'ಮೌರ್ಯ ಆಸ್ಪತ್ರೆ' : 'Maurya Hospital'}</h3>
+                <p>{i18n.language.startsWith('kn') ? 'ಅನಘಾ ಹೆಲ್ತ್‌ಕೇರ್ ಅಡಿಯಲ್ಲಿ ನಿರ್ವಹಿಸಲ್ಪಡುತ್ತದೆ' : 'Managed by Anagha Healthcare'}</p>
                 
                 <div className="contact-details">
                   <div className="contact-detail-item">
                     <div className="contact-icon"><FaMapMarkerAlt /></div>
                     <div className="contact-text">
-                      <h4>Hospital Address</h4>
+                      <h4>{i18n.language.startsWith('kn') ? 'ಆಸ್ಪತ್ರೆಯ ವಿಳಾಸ' : 'Hospital Address'}</h4>
                       <p>
-                        1306, Sahukar Chennaiah Road,<br />
-                        Janatha Nagar, Bogadi 2nd Stage,<br />
-                        TK Layout, Mysuru, Karnataka – 570009
+                        {i18n.language.startsWith('kn') ? (
+                          <>
+                            ೧೩೦೬, ಸಾಹುಕಾರ್ ಚೆನ್ನಯ್ಯ ರಸ್ತೆ,<br />
+                            ಜನತಾ ನಗರ, ಬೋಗಾದಿ ೨ನೇ ಹಂತ,<br />
+                            ಟಿಕೆ ಲೇಔಟ್, ಮೈಸೂರು, ಕರ್ನಾಟಕ – ೫೭೦೦೦೯
+                          </>
+                        ) : (
+                          <>
+                            1306, Sahukar Chennaiah Road,<br />
+                            Janatha Nagar, Bogadi 2nd Stage,<br />
+                            TK Layout, Mysuru, Karnataka – 570009
+                          </>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -102,11 +123,11 @@ const Contact = () => {
                   <div className="contact-detail-item">
                     <div className="contact-icon"><FaPhoneAlt /></div>
                     <div className="contact-text">
-                      <h4>Phone Numbers</h4>
+                      <h4>{i18n.language.startsWith('kn') ? 'ದೂರವಾಣಿ ಸಂಖ್ಯೆಗಳು' : 'Phone Numbers'}</h4>
                       <p>
-                        0821-4534545 (Landline)<br />
-                        9632999007 (Emergency)<br />
-                        9741596356 (Admin Office)
+                        0821-4534545 ({i18n.language.startsWith('kn') ? 'ಲ್ಯಾಂಡ್‌ಲೈನ್' : 'Landline'})<br />
+                        9632999007 ({i18n.language.startsWith('kn') ? 'ತುರ್ತು ಸಹಾಯವಾಣಿ' : 'Emergency'})<br />
+                        9741596356 ({i18n.language.startsWith('kn') ? 'ಆಡಳಿತ ಕಚೇರಿ' : 'Admin Office'})
                       </p>
                     </div>
                   </div>
@@ -114,7 +135,7 @@ const Contact = () => {
                   <div className="contact-detail-item">
                     <div className="contact-icon"><FaEnvelope /></div>
                     <div className="contact-text">
-                      <h4>Email Address</h4>
+                      <h4>{i18n.language.startsWith('kn') ? 'ಇಮೇಲ್ ವಿಳಾಸ' : 'Email Address'}</h4>
                       <a href="mailto:anaghahealthcare2026@gmail.com">anaghahealthcare2026@gmail.com</a>
                     </div>
                   </div>
@@ -129,22 +150,22 @@ const Contact = () => {
                   rel="noopener noreferrer" 
                   className="btn btn-whatsapp"
                 >
-                  <FaWhatsapp style={{ fontSize: '1.2rem' }} /> Chat on WhatsApp
+                  <FaWhatsapp style={{ fontSize: '1.2rem' }} /> {i18n.language.startsWith('kn') ? 'ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಚಾಟ್ ಮಾಡಿ' : 'Chat on WhatsApp'}
                 </a>
                 <a 
                   href="tel:9632999007" 
                   className="btn btn-emergency-call"
                 >
-                  <FaExclamationTriangle /> 24/7 Emergency Line
+                  <FaExclamationTriangle /> {i18n.language.startsWith('kn') ? '24/7 ತುರ್ತು ಸಹಾಯವಾಣಿ' : '24/7 Emergency Line'}
                 </a>
               </div>
             </div>
 
             {/* Form Panel */}
             <div className="contact-form-panel">
-              <h3>Send an Enquiry</h3>
+              <h3>{i18n.language.startsWith('kn') ? 'ವಿಚಾರಣೆ ಕಳುಹಿಸಿ' : 'Send an Enquiry'}</h3>
               <p style={{ color: 'var(--text-muted)', marginBottom: '20px', fontSize: '0.9rem' }}>
-                Fill out the form below and our customer care team will reply shortly.
+                {i18n.language.startsWith('kn') ? 'ಕೆಳಗಿನ ಫಾರ್ಮ್ ಅನ್ನು ಭರ್ತಿ ಮಾಡಿ ಮತ್ತು ನಮ್ಮ ಗ್ರಾಹಕ ಸೇವಾ ತಂಡವು ಶೀಘ್ರದಲ್ಲೇ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತದೆ.' : 'Fill out the form below and our customer care team will reply shortly.'}
               </p>
 
               {status.message && (
@@ -167,24 +188,24 @@ const Contact = () => {
               <form onSubmit={handleFormSubmit}>
                 <div className="form-grid">
                   <div className="form-group">
-                    <label htmlFor="name">Full Name <span style={{ color: 'red' }}>*</span></label>
+                    <label htmlFor="name">{i18n.language.startsWith('kn') ? 'ಪೂರ್ಣ ಹೆಸರು' : 'Full Name'} <span style={{ color: 'red' }}>*</span></label>
                     <input 
                       type="text" 
                       id="name" 
                       name="name" 
-                      placeholder="Enter your name" 
+                      placeholder={i18n.language.startsWith('kn') ? 'ನಿಮ್ಮ ಹೆಸರನ್ನು ನಮೂದಿಸಿ' : 'Enter your name'} 
                       value={formData.name} 
                       onChange={handleInputChange} 
                       required 
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="phone">Phone Number <span style={{ color: 'red' }}>*</span></label>
+                    <label htmlFor="phone">{i18n.language.startsWith('kn') ? 'ದೂರವಾಣಿ ಸಂಖ್ಯೆ' : 'Phone Number'} <span style={{ color: 'red' }}>*</span></label>
                     <input 
                       type="tel" 
                       id="phone" 
                       name="phone" 
-                      placeholder="Enter mobile number" 
+                      placeholder={i18n.language.startsWith('kn') ? 'ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ' : 'Enter mobile number'} 
                       value={formData.phone} 
                       onChange={handleInputChange} 
                       required 
@@ -193,24 +214,24 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group" style={{ marginBottom: '20px' }}>
-                  <label htmlFor="email">Email Address (Optional)</label>
+                  <label htmlFor="email">{i18n.language.startsWith('kn') ? 'ಇಮೇಲ್ ವಿಳಾಸ (ಐಚ್ಛಿಕ)' : 'Email Address (Optional)'}</label>
                   <input 
                     type="email" 
                     id="email" 
                     name="email" 
-                    placeholder="Enter email address" 
+                    placeholder={i18n.language.startsWith('kn') ? 'ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ' : 'Enter email address'} 
                     value={formData.email} 
                     onChange={handleInputChange} 
                   />
                 </div>
 
                 <div className="form-group form-group-full" style={{ marginBottom: '25px' }}>
-                  <label htmlFor="message">Your Message <span style={{ color: 'red' }}>*</span></label>
+                  <label htmlFor="message">{i18n.language.startsWith('kn') ? 'ನಿಮ್ಮ ಸಂದೇಶ' : 'Your Message'} <span style={{ color: 'red' }}>*</span></label>
                   <textarea 
                     id="message" 
                     name="message" 
                     rows="5" 
-                    placeholder="Type your enquiry or question here..." 
+                    placeholder={i18n.language.startsWith('kn') ? 'ನಿಮ್ಮ ವಿಚಾರಣೆ ಅಥವಾ ಪ್ರಶ್ನೆಯನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ...' : 'Type your enquiry or question here...'} 
                     value={formData.message} 
                     onChange={handleInputChange} 
                     required 
@@ -223,7 +244,9 @@ const Contact = () => {
                   disabled={loading}
                   style={{ width: '100%', borderRadius: '8px' }}
                 >
-                  {loading ? 'Submitting...' : 'Submit Enquiry'}
+                  {loading 
+                    ? (i18n.language.startsWith('kn') ? 'ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ...' : 'Submitting...') 
+                    : (i18n.language.startsWith('kn') ? 'ವಿಚಾರಣೆಯನ್ನು ಸಲ್ಲಿಸಿ' : 'Submit Enquiry')}
                 </button>
               </form>
             </div>
@@ -248,7 +271,7 @@ const Contact = () => {
               rel="noopener noreferrer" 
               className="btn btn-primary"
             >
-              <FaDirections style={{ fontSize: '1.25rem' }} /> Get Directions
+              <FaDirections style={{ fontSize: '1.25rem' }} /> {i18n.language.startsWith('kn') ? 'ಮಾರ್ಗಸೂಚಿ ಪಡೆಯಿರಿ' : 'Get Directions'}
             </a>
           </div>
         </div>

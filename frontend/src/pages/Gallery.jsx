@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import PageBanner from '../components/PageBanner';
 import useFetch from '../hooks/useFetch';
+import { useTranslation } from 'react-i18next';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaHourglassHalf } from 'react-icons/fa';
 
 const fallbackGallery = [
@@ -57,6 +58,7 @@ const fallbackGallery = [
 ];
 
 const Gallery = () => {
+  const { t, i18n } = useTranslation();
   const { data: gallery, loading } = useFetch('/gallery');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [pillStyle, setPillStyle] = useState({});
@@ -70,6 +72,13 @@ const Gallery = () => {
 
   const displayedGallery = gallery && gallery.length > 0 ? gallery : fallbackGallery;
   const categories = ['All', 'Hospital', 'CT Scan', 'Infrastructure', 'Events'];
+  const catLabels = { 
+    'All': i18n.language.startsWith('kn') ? 'ಎಲ್ಲಾ' : 'All', 
+    'Hospital': i18n.language.startsWith('kn') ? 'ಆಸ್ಪತ್ರೆ' : 'Hospital', 
+    'CT Scan': i18n.language.startsWith('kn') ? 'ಸಿಟಿ ಸ್ಕ್ಯಾನ್' : 'CT Scan', 
+    'Infrastructure': i18n.language.startsWith('kn') ? 'ಮೂಲಸೌಕರ್ಯ' : 'Infrastructure', 
+    'Events': i18n.language.startsWith('kn') ? 'ಕಾರ್ಯಕ್ರಮಗಳು' : 'Events' 
+  };
 
   const filteredGallery = selectedCategory === 'All'
     ? displayedGallery
@@ -147,16 +156,16 @@ const Gallery = () => {
   };
 
   return (
-    <div className="gallery-page fade-in">
+    <div className="gallery-page fade-in lang-fade-transition" key={i18n.language}>
       {/* Premium Banner */}
       <PageBanner
-        eyebrow="Maurya Hospital · Visual Tour"
-        title={<>Hospital <span style={{ color: '#f0a070' }}>Gallery</span></>}
-        subtitle="A visual overview of our infrastructure, medical technology, health events, and celebrations."
+        eyebrow={i18n.language.startsWith('kn') ? 'ಮೌರ್ಯ ಆಸ್ಪತ್ರೆ · ದೃಶ್ಯಾವಳಿ' : 'Maurya Hospital · Visual Tour'}
+        title={<>{t('nav.gallery')}</>}
+        subtitle={i18n.language.startsWith('kn') ? 'ನಮ್ಮ ಆಸ್ಪತ್ರೆಯ ಮೂಲಸೌಕರ್ಯ, ವೈದ್ಯಕೀಯ ತಂತ್ರಜ್ಞಾನ, ಆರೋಗ್ಯ ಶಿಬಿರಗಳು ಮತ್ತು ಹಬ್ಬಗಳ ಅವಲೋಕನ.' : 'A visual overview of our infrastructure, medical technology, health events, and celebrations.'}
         stats={[
-          { value: '50+', label: 'Photos' },
-          { value: '6+', label: 'Categories' },
-          { value: '2018', label: 'Est. Year' },
+          { value: '50+', label: i18n.language.startsWith('kn') ? 'ಚಿತ್ರಗಳು' : 'Photos' },
+          { value: '6+', label: i18n.language.startsWith('kn') ? 'ವರ್ಗಗಳು' : 'Categories' },
+          { value: '2018', label: i18n.language.startsWith('kn') ? 'ಸ್ಥಾಪಿತ ವರ್ಷ' : 'Est. Year' },
         ]}
       />
 
@@ -186,7 +195,7 @@ const Gallery = () => {
                     outline: 'none'
                   }}
                 >
-                  {cat}
+                  {catLabels[cat] || cat}
                 </button>
               ))}
             </div>
@@ -208,12 +217,14 @@ const Gallery = () => {
                       const imgSource = item.ImagePath
                         ? (item.ImagePath.startsWith('/uploads/') ? `http://localhost:5000${item.ImagePath}` : item.ImagePath)
                         : "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800";
+                      const itemTitle = t(`gallery_data.${item.GalleryId}.title`, { defaultValue: item.Title });
+                      const itemCategory = catLabels[t(`gallery_data.${item.GalleryId}.category`, { defaultValue: item.Category })] || item.Category;
                       return (
                         <div key={`all-${item.GalleryId}-${idx}`} className="marquee-item">
-                          <img src={imgSource} alt={item.Title} loading="lazy" />
+                          <img src={imgSource} alt={itemTitle} loading="lazy" />
                           <div className="masonry-overlay">
-                            <h3>{item.Title}</h3>
-                            <p>{item.Category}</p>
+                            <h3>{itemTitle}</h3>
+                            <p>{itemCategory}</p>
                           </div>
                         </div>
                       )
@@ -230,12 +241,14 @@ const Gallery = () => {
                       const imgSource = item.ImagePath
                         ? (item.ImagePath.startsWith('/uploads/') ? `http://localhost:5000${item.ImagePath}` : item.ImagePath)
                         : "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800";
+                      const itemTitle = t(`gallery_data.${item.GalleryId}.title`, { defaultValue: item.Title });
+                      const itemCategory = catLabels[t(`gallery_data.${item.GalleryId}.category`, { defaultValue: item.Category })] || item.Category;
                       return (
                         <div key={`hosp-${item.GalleryId}-${idx}`} className="marquee-item">
-                          <img src={imgSource} alt={item.Title} loading="lazy" />
+                          <img src={imgSource} alt={itemTitle} loading="lazy" />
                           <div className="masonry-overlay">
-                            <h3>{item.Title}</h3>
-                            <p>{item.Category}</p>
+                            <h3>{itemTitle}</h3>
+                            <p>{itemCategory}</p>
                           </div>
                         </div>
                       )
@@ -252,12 +265,14 @@ const Gallery = () => {
                       const imgSource = item.ImagePath
                         ? (item.ImagePath.startsWith('/uploads/') ? `http://localhost:5000${item.ImagePath}` : item.ImagePath)
                         : "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800";
+                      const itemTitle = t(`gallery_data.${item.GalleryId}.title`, { defaultValue: item.Title });
+                      const itemCategory = catLabels[t(`gallery_data.${item.GalleryId}.category`, { defaultValue: item.Category })] || item.Category;
                       return (
                         <div key={`ct-${item.GalleryId}-${idx}`} className="marquee-item">
-                          <img src={imgSource} alt={item.Title} loading="lazy" />
+                          <img src={imgSource} alt={itemTitle} loading="lazy" />
                           <div className="masonry-overlay">
-                            <h3>{item.Title}</h3>
-                            <p>{item.Category}</p>
+                            <h3>{itemTitle}</h3>
+                            <p>{itemCategory}</p>
                           </div>
                         </div>
                       )
@@ -274,12 +289,14 @@ const Gallery = () => {
                       const imgSource = item.ImagePath
                         ? (item.ImagePath.startsWith('/uploads/') ? `http://localhost:5000${item.ImagePath}` : item.ImagePath)
                         : "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800";
+                      const itemTitle = t(`gallery_data.${item.GalleryId}.title`, { defaultValue: item.Title });
+                      const itemCategory = catLabels[t(`gallery_data.${item.GalleryId}.category`, { defaultValue: item.Category })] || item.Category;
                       return (
                         <div key={`infra-${item.GalleryId}-${idx}`} className="marquee-item">
-                          <img src={imgSource} alt={item.Title} loading="lazy" />
+                          <img src={imgSource} alt={itemTitle} loading="lazy" />
                           <div className="masonry-overlay">
-                            <h3>{item.Title}</h3>
-                            <p>{item.Category}</p>
+                            <h3>{itemTitle}</h3>
+                            <p>{itemCategory}</p>
                           </div>
                         </div>
                       )
@@ -296,12 +313,14 @@ const Gallery = () => {
                       const imgSource = item.ImagePath
                         ? (item.ImagePath.startsWith('/uploads/') ? `http://localhost:5000${item.ImagePath}` : item.ImagePath)
                         : "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800";
+                      const itemTitle = t(`gallery_data.${item.GalleryId}.title`, { defaultValue: item.Title });
+                      const itemCategory = catLabels[t(`gallery_data.${item.GalleryId}.category`, { defaultValue: item.Category })] || item.Category;
                       return (
                         <div key={`events-${item.GalleryId}-${idx}`} className="marquee-item">
-                          <img src={imgSource} alt={item.Title} loading="lazy" />
+                          <img src={imgSource} alt={itemTitle} loading="lazy" />
                           <div className="masonry-overlay">
-                            <h3>{item.Title}</h3>
-                            <p>{item.Category}</p>
+                            <h3>{itemTitle}</h3>
+                            <p>{itemCategory}</p>
                           </div>
                         </div>
                       )
@@ -318,13 +337,13 @@ const Gallery = () => {
                 const imgSource = item.ImagePath
                   ? (item.ImagePath.startsWith('/uploads/') ? `http://localhost:5000${item.ImagePath}` : item.ImagePath)
                   : "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800";
-                
+                const itemTitle = t(`gallery_data.${item.GalleryId}.title`, { defaultValue: item.Title });
                 return (
                   <div key={item.GalleryId} className="premium-masonry-item" onClick={() => openModal(index)}>
-                    <img src={imgSource} alt={item.Title} loading="lazy" />
+                    <img src={imgSource} alt={itemTitle} loading="lazy" />
                     <div className="premium-masonry-overlay">
                       <div className="premium-overlay-content">
-                        <span className="view-details-btn">View Details →</span>
+                        <span className="view-details-btn">{i18n.language.startsWith('kn') ? 'ವಿವರಗಳನ್ನು ನೋಡಿ →' : 'View Details →'}</span>
                       </div>
                     </div>
                   </div>
@@ -339,8 +358,8 @@ const Gallery = () => {
               <div className="coming-soon-icon-wrapper">
                 <FaHourglassHalf />
               </div>
-              <h3>Coming Soon</h3>
-              <p>We are currently gathering media for this category. Check back soon for updates!</p>
+              <h3>{i18n.language.startsWith('kn') ? 'ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ' : 'Coming Soon'}</h3>
+              <p>{i18n.language.startsWith('kn') ? 'ನಾವು ಪ್ರಸ್ತುತ ಈ ವಿಭಾಗಕ್ಕಾಗಿ ಚಿತ್ರಗಳನ್ನು ಸಂಗ್ರಹಿಸುತ್ತಿದ್ದೇವೆ. ಶೀಘ್ರದಲ್ಲೇ ನವೀಕರಣಗೊಳ್ಳಲಿದೆ!' : 'We are currently gathering media for this category. Check back soon for updates!'}</p>
             </div>
           )}
         </div>
@@ -352,6 +371,21 @@ const Gallery = () => {
         const activeImgSource = activeItem.ImagePath
           ? (activeItem.ImagePath.startsWith('/uploads/') ? `http://localhost:5000${activeItem.ImagePath}` : activeItem.ImagePath)
           : "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800";
+
+        const activeTitle = t(`gallery_data.${activeItem.GalleryId}.title`, { defaultValue: activeItem.Title });
+        const activeCategory = catLabels[t(`gallery_data.${activeItem.GalleryId}.category`, { defaultValue: activeItem.Category })] || activeItem.Category;
+        
+        // Dynamic localized descriptions for fallback items
+        let activeDescription = activeItem.Description || "Explore the state-of-the-art facilities and events at Maurya Hospital.";
+        if (i18n.language.startsWith('kn')) {
+          if (activeItem.GalleryId === 2) activeDescription = 'ರೋಗಿಗಳ ಅನುಕೂಲಕ್ಕಾಗಿ ಮತ್ತು ಗೌಪ್ಯತೆಗಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ಅತ್ಯಾಧುನಿಕ ಸಮಾಲೋಚನಾ ಕೊಠಡಿಗಳು.';
+          else if (activeItem.GalleryId === 3) activeDescription = 'ನಮ್ಮ 24/7 ಸುಧಾರಿತ ಸಿಟಿ ಸ್ಕ್ಯಾನಿಂಗ್ ಸೌಲಭ್ಯವು ನಿಖರವಾದ ರೋಗನಿರ್ಣಯಕ್ಕಾಗಿ ಹೈ-ರೆಸಲ್ಯೂಷನ್ ಚಿತ್ರಣವನ್ನು ಒದಗಿಸುತ್ತದೆ.';
+          else if (activeItem.GalleryId === 4) activeDescription = 'ತಕ್ಷಣದ ಮತ್ತು ಅತ್ಯಂತ ಸ್ಪಷ್ಟವಾದ ಫಲಿತಾಂಶಗಳನ್ನು ನೀಡುವ ಕಡಿಮೆ ವಿಕಿರಣದ ಡಿಜಿಟಲ್ ಎಕ್ಸ್-ರೇ ವ್ಯವಸ್ಥೆಗಳು.';
+          else if (activeItem.GalleryId === 5) activeDescription = 'ಸಾರ್ವಜನಿಕರಿಗೆ ಉಚಿತ ತಪಾಸಣೆ ಮತ್ತು ವೈದ್ಯಕೀಯ ಸಲಹೆಯನ್ನು ನೀಡುವ ಸಮುದಾಯ ಸೇವಾ ಕಾರ್ಯಕ್ರಮಗಳು.';
+          else if (activeItem.GalleryId === 6) activeDescription = 'ಸುಧಾರಿತ ಜೀವ ರಕ್ಷಣಾ ವ್ಯವಸ್ಥೆಗಳನ್ನು ಹೊಂದಿರುವ ಅತ್ಯಂತ ಸ್ವಚ್ಛ ಹಾಗೂ ಆಧುನಿಕ ಶಸ್ತ್ರಚಿಕಿತ್ಸಾ ಕೊಠಡಿಗಳು.';
+          else if (activeItem.GalleryId === 7) activeDescription = '1:1 ನರ್ಸಿಂಗ್ ಅನುಪಾತ ಮತ್ತು ಸುಧಾರಿತ ಮಾನಿಟರಿಂಗ್ ಉಪಕರಣಗಳನ್ನು ಹೊಂದಿರುವ ತೀವ್ರ ನಿಗಾ ಘಟಕಗಳು.';
+          else if (activeItem.GalleryId === 8) activeDescription = 'ಆಸ್ಪತ್ರೆಯ ಸಿಬ್ಬಂದಿ ಮತ್ತು ಆಡಳಿತ ಮಂಡಳಿಯು ರೋಗಿಗಳೊಂದಿಗೆ ರಾಷ್ಟ್ರೀಯ ಹಬ್ಬಗಳನ್ನು ಆಚರಿಸುತ್ತಿರುವುದು.';
+        }
 
         return createPortal(
           <div className="lightbox-modal">
@@ -368,24 +402,24 @@ const Gallery = () => {
 
               <div className="lightbox-layout">
                 <div className="lightbox-image-container">
-                  <img src={activeImgSource} alt={activeItem.Title} />
+                  <img src={activeImgSource} alt={activeTitle} />
                 </div>
                 <div className="lightbox-details">
-                  <span className="lightbox-category">{activeItem.Category}</span>
-                  <h2>{activeItem.Title}</h2>
-                  <p>{activeItem.Description || "Explore the state-of-the-art facilities and events at Maurya Hospital, designed to provide the highest standard of care."}</p>
+                  <span className="lightbox-category">{activeCategory}</span>
+                  <h2>{activeTitle}</h2>
+                  <p>{activeDescription}</p>
                   
                   <div className="lightbox-meta">
                     <div className="meta-item">
-                      <strong>Facility Type:</strong> {activeItem.Category}
+                      <strong>{i18n.language.startsWith('kn') ? 'ಸೌಲಭ್ಯದ ಪ್ರಕಾರ:' : 'Facility Type:'}</strong> {activeCategory}
                     </div>
                     <div className="meta-item">
-                      <strong>Location:</strong> Main Hospital Building
+                      <strong>{i18n.language.startsWith('kn') ? 'ಸ್ಥಳ:' : 'Location:'}</strong> {i18n.language.startsWith('kn') ? 'ಮುಖ್ಯ ಆಸ್ಪತ್ರೆಯ ಕಟ್ಟಡ' : 'Main Hospital Building'}
                     </div>
                   </div>
 
                   <button className="btn btn-primary" style={{ marginTop: 'auto' }} onClick={closeModal}>
-                    Close View
+                    {i18n.language.startsWith('kn') ? 'ಮುಚ್ಚಿ' : 'Close View'}
                   </button>
                 </div>
               </div>

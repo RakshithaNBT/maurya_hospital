@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const NotFound = () => {
+  const { t, i18n } = useTranslation();
+
   return (
-    <div className="container container-padding error-page fade-in">
+    <div className="container container-padding error-page fade-in lang-fade-transition" key={i18n.language}>
       <div className="error-code">404</div>
-      <h2>Page Not Found</h2>
-      <p>
-        The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
-      </p>
+      <h2>{t('not_found.title')}</h2>
+      <p>{t('not_found.desc')}</p>
       <Link to="/" className="btn btn-primary">
-        Go Back to Home
+        {i18n.language.startsWith('kn') ? 'ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ' : 'Go Back to Home'}
       </Link>
     </div>
   );

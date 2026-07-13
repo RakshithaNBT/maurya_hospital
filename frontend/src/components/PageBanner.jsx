@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * PageBanner – Premium reusable hero banner for inner pages.
@@ -9,7 +10,9 @@ import React from 'react';
  *   badge        {string}   – Top-right glassmorphism badge text
  *   stats        {Array}    – [{value, label}, ...] — max 3 items
  */
-const PageBanner = ({ title, subtitle, eyebrow, badge = 'TRUSTED HEALTHCARE · MYSURU', stats = [] }) => {
+const PageBanner = ({ title, subtitle, eyebrow, badge, stats = [] }) => {
+  const { t } = useTranslation();
+  const displayBadge = badge || t('banner.default_badge');
   const crosses = [
     { top: '12%', left: '5%',  size: 48, opacity: 0.07 },
     { top: '55%', left: '2%',  size: 28, opacity: 0.05 },
@@ -90,7 +93,7 @@ const PageBanner = ({ title, subtitle, eyebrow, badge = 'TRUSTED HEALTHCARE · M
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#f0a070">
           <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
         </svg>
-        <span className="page-banner-badge-text">{badge}</span>
+        <span className="page-banner-badge-text">{displayBadge}</span>
       </div>
 
       {/* Content */}

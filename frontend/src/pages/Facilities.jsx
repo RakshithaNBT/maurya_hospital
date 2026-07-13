@@ -1,6 +1,7 @@
 import React from 'react';
 import PageBanner from '../components/PageBanner';
 import useFetch from '../hooks/useFetch';
+import { useTranslation } from 'react-i18next';
 import otRoomNew from '../assets/ot_room_new.jpg';
 import icuWard from '../assets/icu_ward.jpg';
 import hospitalPharma from '../assets/hospital_pharma.png';
@@ -92,22 +93,23 @@ const fallbackFacilities = [
 ];
 
 const Facilities = () => {
+  const { t, i18n } = useTranslation();
   const { data: facilities, loading } = useFetch('/facilities');
 
   const displayedFacilities = facilities && facilities.length > 0 ? facilities : fallbackFacilities;
 
   return (
-    <div className="facilities-page fade-in">
+    <div className="facilities-page fade-in lang-fade-transition" key={i18n.language}>
 
       {/* Premium Banner */}
       <PageBanner
-        eyebrow="State-of-the-Art Infrastructure"
-        title={<>Our <span style={{ color: '#f0a070' }}>Facilities</span></>}
-        subtitle="We support patient care with top-tier infrastructure, operating theatres, diagnostic services, and inpatient support."
+        eyebrow={i18n.language.startsWith('kn') ? 'ಅತ್ಯಾಧುನಿಕ ಮೂಲಸೌಕರ್ಯ' : 'State-of-the-Art Infrastructure'}
+        title={<>{t('nav.facilities')}</>}
+        subtitle={i18n.language.startsWith('kn') ? 'ನಮ್ಮ ಆಸ್ಪತ್ರೆಯು ರೋಗಿಗಳ ಗುಣಮುಖರಾಗಲು ಅತ್ಯುತ್ತಮ ಸೌಲಭ್ಯಗಳನ್ನು ಮತ್ತು ಚಿಕಿತ್ಸಾ ವ್ಯವಸ್ಥೆಗಳನ್ನು ಹೊಂದಿದೆ.' : 'We support patient care with top-tier infrastructure, operating theatres, diagnostic services, and inpatient support.'}
         stats={[
-          { value: '3', label: 'Operation Theatres' },
-          { value: 'ICU', label: 'Critical Care Unit' },
-          { value: '24/7', label: 'Lab & Diagnostics' },
+          { value: '3', label: i18n.language.startsWith('kn') ? 'ಶಸ್ತ್ರಚಿಕಿತ್ಸಾ ಕೊಠಡಿಗಳು' : 'Operation Theatres' },
+          { value: 'ICU', label: i18n.language.startsWith('kn') ? 'ತೀವ್ರ ನಿಗಾ ಘಟಕ' : 'Critical Care Unit' },
+          { value: '24/7', label: i18n.language.startsWith('kn') ? 'ಲ್ಯಾಬ್ ಮತ್ತು ರೋಗನಿರ್ಣಯ' : 'Lab & Diagnostics' },
         ]}
       />
 
@@ -115,8 +117,8 @@ const Facilities = () => {
       <section className="section-padding">
         <div className="container">
           <div className="section-header">
-            <h2>Critical Infrastructure</h2>
-            <p>Maurya Hospital utilizes advanced technologies and clean spaces to improve clinical outcomes.</p>
+            <h2>{t('facilities.heading')}</h2>
+            <p>{t('facilities.subheading')}</p>
           </div>
 
           {loading && (
@@ -141,11 +143,11 @@ const Facilities = () => {
                     className="hospital-card"
                   >
                     <div className="card-img-wrapper">
-                      <img src={imgSource} alt={fac.Name} className={imgClass} />
+                      <img src={imgSource} alt={t(`facilities_data.${fac.FacilityId}.name`, { defaultValue: fac.Name })} className={imgClass} />
                     </div>
                     <div className="card-content">
-                      <h3>{fac.Name}</h3>
-                      <p>{fac.Description}</p>
+                      <h3>{t(`facilities_data.${fac.FacilityId}.name`, { defaultValue: fac.Name })}</h3>
+                      <p>{t(`facilities_data.${fac.FacilityId}.desc`, { defaultValue: fac.Description })}</p>
                     </div>
                   </div>
                 );
