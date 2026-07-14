@@ -2395,31 +2395,9 @@ select {
     padding: 20px;
   }
 
-  .page-banner-badge {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin: 0 auto 16px auto;
-    display: inline-flex;
-    justify-content: center;
-  }
 
-  .page-banner-stats {
-    gap: 16px;
-  }
 
-  .page-banner-stat-item {
-    padding: 8px 16px;
-    min-width: 80px;
-  }
 
-  .page-banner-stat-value {
-    font-size: 1.3rem;
-  }
-
-  .page-banner-stat-label {
-    font-size: 0.65rem;
-  }
 
   .contact-info-panel,
   .contact-form-panel {
@@ -2842,6 +2820,16 @@ a:hover {
 
   .lang-dropdown-container {
     margin: 10px auto !important;
+  }
+
+  /* Center the trust badge on mobile/tablet view */
+  .page-banner-badge {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    margin: 0 auto 16px auto !important;
+    display: inline-flex !important;
+    justify-content: center !important;
   }
 }
 

@@ -67,7 +67,7 @@ const Doctors = () => {
       {/* Premium Banner */}
       <PageBanner
         eyebrow={t('banner.doctors.eyebrow')}
-        title={<>{t('banner.doctors.title')} <span style={{ color: '#f0a070' }}>Us</span></>}
+        title={<>{t('banner.doctors.title')}</>}
         subtitle={t('banner.doctors.subtitle')}
         stats={[
           { value: '15+', label: t('banner.departments.stat_consultants') },
