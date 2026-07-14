@@ -2778,3 +2778,111 @@ a:hover {
     opacity: 1;
   }
 }
+
+/* ─── Mobile Responsiveness Enhancements ─── */
+
+/* Global container overflow protections */
+.home-page,
+.about-page,
+.departments-page,
+.doctors-page,
+.facilities-page,
+.ct-imaging-page,
+.gallery-page,
+.contact-page {
+  overflow-x: hidden !important;
+  width: 100% !important;
+}
+
+@media (max-width: 991px) {
+  /* Ensure header remains neat and sticky */
+  .header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+  }
+  .navbar {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Make navigation drawer full height and fixed */
+  .nav-menu {
+    position: fixed !important;
+    top: 70px !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: calc(100vh - 70px) !important;
+    background-color: var(--bg-color) !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 40px 24px !important;
+    gap: 24px !important;
+    transition: var(--transition) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    overflow-y: auto !important;
+    z-index: 1000 !important;
+  }
+
+  .nav-menu.open {
+    left: 0 !important;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 1.1rem !important;
+    padding: 10px 0 !important;
+  }
+
+  .lang-dropdown-container {
+    margin: 10px auto !important;
+  }
+}
+
+/* Gallery Filter Scrolling Tabs on Mobile */
+@media (max-width: 600px) {
+  .gallery-filter-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    margin: 0 auto 30px auto !important;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+    scrollbar-width: none !important; /* Firefox */
+  }
+  
+  .gallery-filter-container::-webkit-scrollbar {
+    display: none !important; /* Chrome/Safari */
+  }
+
+  .gallery-filter {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: max-content !important;
+  }
+
+  .sliding-pill {
+    display: none !important; /* Disable animated pill on mobile */
+  }
+
+  .filter-btn {
+    font-size: 0.85rem !important;
+    padding: 8px 16px !important;
+    white-space: nowrap !important;
+    border-radius: 20px !important;
+  }
+
+  .filter-btn.active {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(158, 42, 34, 0.2) !important;
+  }
+}

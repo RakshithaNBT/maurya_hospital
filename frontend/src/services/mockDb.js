@@ -19,6 +19,7 @@ import deptOncology from '../assets/dept_oncology.png';
 import deptDermatology from '../assets/dept_dermatology.png';
 import doctorBhavana from '../assets/doctor_bhavana.jpg';
 import doctorAnudeep from '../assets/doctor_anudeep.jpg';
+import doctorXyz from '../assets/doctor_xyz.png';
 import ctScanner from '../assets/ct_scanner.jpg';
 import ctControlRoom from '../assets/ct_control_room.jpg';
 import labSysmex from '../assets/lab_sysmex.jpg';
@@ -213,6 +214,15 @@ const DEFAULT_DOCTORS = [
     Experience: '10 Years',
     Image: doctorAnudeep,
     Description: 'Dr. Anudeep Talagavadi Channaiah is a distinguished Plastic & Reconstructive Surgeon specialized in cosmetic procedures, microsurgery, hand reconstructive procedures, burn surgeries, and cosmetic enhancements. With comprehensive clinical training in both General Surgery and Plastic Surgery, he is committed to delivering state-of-the-art surgical care with absolute precision.'
+  },
+  {
+    DoctorId: '4',
+    Name: 'DR. XYZ',
+    Qualification: 'MBBS, MD (Internal Medicine)',
+    Specialization: 'Consultant General Physician',
+    Experience: '10 Years',
+    Image: doctorXyz,
+    Description: 'Dr. XYZ is a highly dedicated specialist in General Medicine, committed to providing exceptional care, accurate diagnostics, and personalized treatment plans.'
   }
 ];
 

@@ -246,7 +246,7 @@ export const departmentsData = [
     ]
   },
   {
-    DepartmentId: 9,
+    DepartmentId: 12,
     slug: 'neurology',
     DepartmentName: 'Neurology',
     subtitle: 'Expert Management of Brain and Nerve Disorders',
@@ -274,7 +274,7 @@ export const departmentsData = [
     ]
   },
   {
-    DepartmentId: 10,
+    DepartmentId: 11,
     slug: 'cardiology',
     DepartmentName: 'Cardiology',
     subtitle: 'State-of-the-art Cardiovascular Diagnostics and Care',
@@ -302,35 +302,34 @@ export const departmentsData = [
     ]
   },
   {
-    DepartmentId: 11,
-    slug: 'gastroenterology',
-    DepartmentName: 'Gastroenterology',
-    subtitle: 'Comprehensive Care for Digestive Health',
-    Description: 'Diagnosis and therapeutic treatments for digestive, pancreatic, liver, and biliary tract conditions.',
-    fullDescription: 'The Gastroenterology department offers expert diagnosis and management for all disorders of the digestive system, including the liver, pancreas, and biliary tract. We utilize advanced endoscopic techniques for both diagnostic evaluation and therapeutic intervention, ensuring minimally invasive and highly effective treatment.',
-    Image: deptGastroenterology,
+    DepartmentId: 10,
+    slug: 'pulmonology',
+    DepartmentName: 'Pulmonology',
+    subtitle: 'Comprehensive Care for Respiratory & Lung Health',
+    Description: 'Care for asthma, COPD, lung infections, sleep apnea, and other respiratory disorders.',
+    fullDescription: 'Our Pulmonology department provides comprehensive diagnosis, treatment, and long-term management for a wide range of respiratory diseases and lung conditions. With advanced diagnostics (including pulmonary function tests and sleep studies), our specialists are committed to restoring your lung health and helping you breathe easily.',
+    Image: deptPulmonology,
     keyServices: [
-      'Diagnostic & Therapeutic Endoscopy',
-      'Colonoscopy & Polypectomy',
-      'Liver Disease & Hepatitis Management',
-      'Inflammatory Bowel Disease (IBD) Care',
-      'ERCP for Biliary & Pancreatic Stones'
+      'Asthma & COPD Management',
+      'Lung Infection Treatment',
+      'Sleep Apnea & Sleep Studies',
+      'Pulmonary Function Testing (PFT)',
+      'Allergy & Respiratory Care'
     ],
     doctors: [
-      { name: 'Dr. Sanjay Gupta', role: 'Senior Gastroenterologist' },
-      { name: 'Dr. Amit Trivedi', role: 'Hepatologist & Endoscopist' }
+      { name: 'Dr. Vivek Kumar', role: 'Consultant Pulmonologist' }
     ],
     facilities: [
-      'State-of-the-art Endoscopy Suites',
-      'High-Definition Video Endoscopes',
-      'FibroScan for Liver Evaluation'
+      'Advanced Pulmonary Function Lab',
+      'Sleep Study Suite',
+      'Bronchoscopy Unit'
     ],
     faqs: [
-      { question: 'Is an endoscopy painful?', answer: 'Endoscopy is generally not painful. It is performed under conscious sedation or local anesthesia to ensure your comfort throughout the procedure.' }
+      { question: 'What is a Pulmonary Function Test (PFT)?', answer: 'A PFT is a non-invasive diagnostic test that measures how well your lungs take in and release air and how efficiently they transfer oxygen into your blood.' }
     ]
   },
   {
-    DepartmentId: 12,
+    DepartmentId: 9,
     slug: 'ent',
     DepartmentName: 'ENT (Ear, Nose, and Throat)',
     subtitle: 'Specialized Head, Neck, and ENT Care',

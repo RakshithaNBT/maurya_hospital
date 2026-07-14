@@ -239,9 +239,9 @@ const About = () => {
             {/* Stats row */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}>
               {[
-                { value: '20+', labelKey: 'stats_dept' },
-                { value: '24/7', labelKey: 'stat_care' },
-                { value: '10K+', labelKey: 'stat_satisfaction' },
+                { value: '20+', labelKey: 'banner.departments.stat_dept' },
+                { value: '24/7', labelKey: 'banner.departments.stat_care' },
+                { value: '10K+', labelKey: 'banner.about.stat_satisfaction' },
               ].map((s, i) => (
                 <div key={i} style={{
                   textAlign: 'center',
@@ -253,7 +253,7 @@ const About = () => {
                   minWidth: '100px',
                 }}>
                   <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#f0a070', lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.08em', marginTop: '4px', textTransform: 'uppercase' }}>{t(`banner.departments.${s.labelKey}`)}</div>
+                  <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.08em', marginTop: '4px', textTransform: 'uppercase' }}>{t(s.labelKey)}</div>
                 </div>
               ))}
             </div>
