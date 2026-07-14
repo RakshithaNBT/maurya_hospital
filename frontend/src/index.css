@@ -2856,6 +2856,11 @@ a:hover {
     justify-content: center !important;
     width: fit-content !important;
   }
+
+  /* Increase top padding on mobile to create space under the absolute badge */
+  .page-banner-content {
+    padding-top: 110px !important;
+  }
 }
 
 /* Gallery Filter Scrolling Tabs on Mobile */

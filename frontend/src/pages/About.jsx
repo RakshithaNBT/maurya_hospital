@@ -186,7 +186,7 @@ const About = () => {
         </div>
 
         {/* Content */}
-        <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', width: '100%', padding: '80px 20px 60px' }}>
+        <div className="page-banner-content" style={{ position: 'relative', zIndex: 10, textAlign: 'center', width: '100%', padding: '80px 20px 60px' }}>
           {/* Radial glow behind heading */}
           <div style={{
             position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
@@ -205,7 +205,7 @@ const About = () => {
               border: '1px solid rgba(255,180,150,0.25)',
               borderRadius: '20px',
               background: 'rgba(255,255,255,0.06)',
-            }}>{t('banner.default_badge')}</span>
+            }}>{t('banner.about.eyebrow')}</span>
 
             <h1 style={{
               fontSize: 'clamp(2.2rem, 5vw, 3.6rem)',

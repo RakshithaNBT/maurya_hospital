@@ -97,7 +97,7 @@ const PageBanner = ({ title, subtitle, eyebrow, badge, stats = [] }) => {
       </div>
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', width: '100%', maxWidth: '100%', boxSizing: 'border-box', padding: '80px 20px 60px' }}>
+      <div className="page-banner-content" style={{ position: 'relative', zIndex: 10, textAlign: 'center', width: '100%', maxWidth: '100%', boxSizing: 'border-box', padding: '80px 20px 60px' }}>
         {/* Radial glow behind heading */}
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
